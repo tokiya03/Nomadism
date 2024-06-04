@@ -6,11 +6,34 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <script src="https://kit.fontawesome.com/64e9ac69ea.js" crossorigin="anonymous"></script>
+    <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
-    <%= yield %>
+    <header class="border-bottom">
+      <%= render 'layouts/header' %>
+    </header>
+
+    <main>
+      <% flash.each do |message_type, message| %>
+        <div class="flash-message <%= message_type %>"><%= message %></div>
+      <% end %>
+
+      <%= yield %>
+    </main>
+
+    <footer class="border-top">
+      <div class="container">
+        <div class="row">
+          <div class="col d-flex flex-row">
+            <p>Copyright © 2024 Hiroyuki Tokiya.</p>
+            <%= link_to 'https://github.com/tokiya03' do %><i class='fa-brands fa-github'></i><% end %>
+            <%= link_to 'https://x.com/h_tokiya03' do %><i class="fa-brands fa-twitter"></i><% end %>
+          </div>
+        </div>
+      </div>
+    </footer>
   </body>
 </html>
