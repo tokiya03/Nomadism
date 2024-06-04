@@ -12,7 +12,7 @@
   </head>
 
   <body>
-    <header class="border-bottom">
+    <header class="border">
       <%= render 'layouts/header' %>
     </header>
 
@@ -24,13 +24,13 @@
       <%= yield %>
     </main>
 
-    <footer class="border-top">
+    <footer class="border">
       <div class="container">
         <div class="row">
-          <div class="col d-flex flex-row">
+          <div class="col d-flex justify-content-center my-4">
             <p>Copyright © 2024 Hiroyuki Tokiya.</p>
-            <%= link_to 'https://github.com/tokiya03' do %><i class='fa-brands fa-github'></i><% end %>
-            <%= link_to 'https://x.com/h_tokiya03' do %><i class="fa-brands fa-twitter"></i><% end %>
+              <!-- <%#= link_to 'https://github.com/tokiya03' do %><i class='fa-brands fa-github'></i><%# end %> -->
+              <!-- <%#= link_to 'https://x.com/h_tokiya03' do %><i class="fa-brands fa-twitter"></i><%# end %> -->
           </div>
         </div>
       </div>
