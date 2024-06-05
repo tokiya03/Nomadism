@@ -1,14 +1,11 @@
 class Public::UsersController < ApplicationController
     before_action :authenticate_user!
-    before_action :set_current_user
 
   def mypage
-    @self = @user
-    # 自身が投稿したものに対するコメント
-    # @comments = @user.posts.comments
+    @user = current_user
   end
 
-  def edit
+  def index
     @user = User.find(params[:id])
   end
 
@@ -16,9 +13,18 @@ class Public::UsersController < ApplicationController
     @user = User.find(params[:id])
   end
 
+  def edit
+    @user = User.find(params[:id])
+  end
+
   def update
     user = User.find(params[:id])
-    user.update
+    if user.id = current_user.id
+      user.update
+      redirect_to :show
+    else
+      render :edit
+    end
   end
 
   def confirm
@@ -30,10 +36,6 @@ class Public::UsersController < ApplicationController
 
   # ストロングパラメータ
   private
-  def set_current_user
-    @user = current_user
-  end
-
   def user_params
     params.require(:user).permit(:name, :email, :image)
   end

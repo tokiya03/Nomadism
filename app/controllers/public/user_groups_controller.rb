@@ -1,6 +1,4 @@
 class Public::UserGroupsController < ApplicationController
-
-  has_many :users
-  has_many :groups
+  before_action :authenticate_user!
 
 end

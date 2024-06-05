@@ -10,6 +10,8 @@ class User < ApplicationRecord
 
   has_one_attached :image
 
+  validates :name, presence: true
+
 
   # ゲストユーザでログインするためのguestメソッドの記述
   GUEST_USER_EMAIL = 'guest@example.jp'

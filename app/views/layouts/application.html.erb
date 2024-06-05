@@ -17,13 +17,7 @@
     </header>
 
     <main>
-      <% flash.each do |message_type, message| %>
-        <div class="flash-message <%= message_type %> text-center w-100 py-2 bg-success-subtle text-white"><%= message %></div>
-      <% end %>
-
-      <div class="my-4">
-        <%= yield %>
-      </div>
+      <%= yield %>
     </main>
 
     <footer class="border">
