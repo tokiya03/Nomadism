@@ -2,9 +2,13 @@ Rails.application.routes.draw do
   # 顧客用
   # URL /users/sign_in ...
   devise_for :users, skip: [:passwords], controllers: {
-    registrations: "public/registrations",
+    registrations: 'public/registrations',
     sessions: 'public/sessions'
   }
+
+  devise_scope :user do
+    post 'users/guest_sign_in', to: 'users/sessions#guest_sigin_in'
+  end
 
   scope module: :public do
     root to: 'homes#top'
@@ -25,7 +29,7 @@ Rails.application.routes.draw do
   # 管理者用
   # URL /admin/sign_in ...
   devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
-    sessions: "admin/sessions"
+    sessions: 'dmin/sessions'
   }
 
 

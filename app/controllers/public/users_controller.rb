@@ -1,6 +1,11 @@
 class Public::UsersController < ApplicationController
+    before_action :authenticate_user!
+    before_action :set_current_user
+
   def mypage
-    @user = current_user.id
+    @self = @user
+    # 自身が投稿したものに対するコメント
+    # @comments = @user.posts.comments
   end
 
   def edit
@@ -25,6 +30,10 @@ class Public::UsersController < ApplicationController
 
   # ストロングパラメータ
   private
+  def set_current_user
+    @user = current_user
+  end
+
   def user_params
     params.require(:user).permit(:name, :email, :image)
   end

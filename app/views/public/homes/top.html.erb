@@ -1,20 +1,47 @@
 <div class="container">
   <div class="row">
     <div class="col">
-      <div class="d-flex justify-content-center mb-4">
+      <div class="d-flex justify-content-center">
+        <h2 class="text-align-center">Welcome to Nomadism！</h2>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col">
+      <div class="d-flex justify-content-center my-4">
         <%= image_tag 'top_image.jpg', size: "540x540" %>
       </div>
+    </div>
+  </div>
 
-      <div class="d-flex justify-content-center">
-        <h2 class="text-align-center">ようこそ Nomadism へ!!</h2>
-      </div>
+  <div class="row">
+    <div class="col">
+      <% if user_signed_in? %>
+        <h5>新着投稿</h5>
 
-      <h5>新着投稿</h5>
-
-      <div class="d-flex justify-content-end">
-        <%= link_to '全ての投稿を見る >', posts_path %>
-      </div>
-
+        <div class="d-flex justify-content-end">
+          <%= link_to '全ての投稿を見る >', posts_path %>
+        </div>
+      <% else %>
+        <div class="btn-wrapper col-6 mx-auto">
+          <div class="row">
+            <div class="col">
+              <%= link_to 'ゲストログイン ( 閲覧用 )', users_guest_sign_in_path, method: :post, class: "btn btn-sm btn-secondary btn-block mb-3 sign_in" %>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col">
+              <%= link_to 'ログイン', new_user_session_path, class: "btn btn-sm btn-info btn-block mb-3 sign_in" %>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col">
+              <%= link_to '新規登録', new_user_registration_path, class: "btn btn-sm btn-success btn-block sign_up" %>
+            </div>
+          </div>
+        </div>
+      <% end %>
     </div>
   </div>
 </div>

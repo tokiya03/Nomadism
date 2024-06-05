@@ -1,1 +1,21 @@
-<h3>投稿一覧</h3>
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <h3>みんなの投稿一覧</h3>
+
+      <table class="table">
+        <tr>
+          <th>スポット名</th>
+          <th>場所の説明</th>
+        </tr>
+        <%# @users.each do |user| %>
+          <tr>
+            <td><%#= user.posts.shop_name %></td>
+            <td><%#= user.posts.caption %></td>
+          </tr>
+        <%# end %>
+      </table>
+    </div>
+  </div>
+</div>
+

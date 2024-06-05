@@ -25,11 +25,12 @@
             <i class="fa-solid fa-satellite"></i> 投稿一覧
           <% end %>
         </li>
-        <li class="nav-item">
-          <%= link_to "#", class: "btn" do %>
-            <i class="fa-solid fa-people-group"></i> グループ一覧
-          <% end %>
-        </li>
+        <!-- フェーズ3で実装するため一時的にコメントアウト-->
+        <!--<li class="nav-item">-->
+        <!--  <%#= link_to "#", class: "btn" do %>-->
+        <!--    <i class="fa-solid fa-people-group"></i> グループ一覧-->
+        <!--  <%# end %>-->
+        <!--</li>-->
 
         <% if user_signed_in? %>
           <li class="nav-item">
