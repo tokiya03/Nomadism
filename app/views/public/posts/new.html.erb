@@ -11,8 +11,6 @@
       <div class="row">
         <div class="col-6 mx-auto">
           <%= form_with model: @post, url: posts_path, method: :post, local: true do |f| %>
-            <%= f.hidden_field :user_id, value: current_user.id %>
-
             <div class="field mb-3">
               <%= f.label :店名 %><br />
               <%= f.text_field :name, autofocus: true, class: "form-control" %>

@@ -7,11 +7,6 @@ class Public::UsersController < ApplicationController
     @posts = @user.posts
   end
 
-  def index
-    @users = User.all
-    @posts = Post.all
-  end
-
   def show
     @user = User.find(params[:id])
     @posts = @user.posts
@@ -19,20 +14,16 @@ class Public::UsersController < ApplicationController
 
   def edit
     @user = User.find(params[:id])
-
-    unless @user.id == current_user.id
+    if @user.id != current_user.id
+      flash[:info] = '他のユーザーのプロフィール編集画面には遷移できません。'
       redirect_to user_path(current_user.id)
     end
   end
 
   def update
     @user = User.find(params[:id])
-
-    unless @user.id == current_user.id
-      redirect_to user_path(current_user.id)
-    end
-
-    if @user.update(user_params)
+    if @user.id == current_user.id
+      @user.update(user_params)
       flash[:success] = 'プロフィールの更新に成功しました。'
       redirect_to mypage_path
     else
@@ -51,10 +42,14 @@ class Public::UsersController < ApplicationController
   # 物理削除する時の記述
   def destroy
     @user = User.find(params[:id])
-    @user.id = current_user.id
-    @user.destroy
-    flash[:info] = '退会処理が完了しました。'
-    redirect_to new_user_registration_path
+    if @user.id == current_user.id
+      @user.destroy
+      flash[:info] = '退会処理が完了しました。'
+      redirect_to new_user_registration_path
+    else
+      flash[:danger] = '退会処理に失敗しました。'
+      render :edit
+    end
   end
 
 

@@ -15,6 +15,10 @@
         <div class="col">
           <table class="table">
             <tr>
+              <th>投稿者</th>
+              <td><%= link_to @post.user.name, user_path(@post.user_id) %></td>
+            </tr>
+            <tr>
               <th>店名（場所の名前）</th>
               <td><%= @post.name %></td>
             </tr>

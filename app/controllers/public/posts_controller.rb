@@ -8,7 +8,7 @@ class Public::PostsController < ApplicationController
 
   def create
     @post = Post.new(post_parms)
-
+    @post.user_id = current_user.id
     if @post.save
       flash[:success] = '投稿に成功しました。'
       redirect_to post_path(@post.id)
@@ -28,16 +28,15 @@ class Public::PostsController < ApplicationController
 
   def edit
     @post = Post.find(params[:id])
-
     if @post.user_id != current_user.id
       flash[:info] = '投稿者以外は当投稿の編集画面に遷移できません。'
       redirect_to posts_path
     end
   end
 
+
   def update
     @post = Post.find(params[:id])
-    @post.user_id = current_user.id
     if @post.update(post_parms)
       flash[:success] = '投稿の更新に成功しました。'
       redirect_to post_path(@post.id)
@@ -48,10 +47,11 @@ class Public::PostsController < ApplicationController
 
   end
 
+
   def destroy
     @post = Post.find(params[:id])
-    @post.user_id = current_user.id
-    if @post.destroy
+    if@post.user_id = current_user.id
+      @post.destroy
       flash[:success] = '投稿の削除に成功しました。'
       redirect_to posts_path
     else
@@ -64,7 +64,7 @@ class Public::PostsController < ApplicationController
   # ストロングパラメータ
   private
   def post_parms
-    params.require(:post).permit(:user_id, :name, :caption, :address)
+    params.require(:post).permit(:name, :caption, :address)
   end
 
   def check_guest_user

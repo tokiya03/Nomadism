@@ -46,13 +46,19 @@
           <th>コメント数</th>
         </tr>
         <% @posts.each do |post| %>
-        <tr>
-          <td><%= image_tag post.user.image, size: "80x80" %><br /><%= post.user.name %></td>
-          <td><%= post.name %></td>
-          <td><%= post.caption %></td>
-          <td><%= post.address %></td>
-          <td><%= post.comments.count %></td>
-        </tr>
+          <tr>
+            <td>
+              <% if post.user.image.attached? %>
+                <%= image_tag post.user.image, size: "80x80" %><br /><%= post.user.name %>
+              <% else %>
+                <%= image_tag 'no_image.jpg', size: "80x80" %><br /><%= post.user.name %>
+              <% end %>
+            </td>
+            <td><%= link_to post.name, post_path(post.id) %></td>
+            <td><%= post.caption %></td>
+            <td><%= post.address %></td>
+            <td><%= post.comments.count %></td>
+          </tr>
         <% end %>
       </table>
     </div>
