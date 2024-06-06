@@ -11,6 +11,8 @@ class User < ApplicationRecord
   has_one_attached :image
 
   validates :name, presence: true
+  validates :email, presence: true
+  validates :image, presence: true
 
 
   # ゲストユーザでログインするためのguestメソッドの記述
@@ -20,5 +22,9 @@ class User < ApplicationRecord
       user.password = SecureRandom.urlsafe_base64
       user.name = 'ゲストユーザー'
     end
+  end
+
+  def guest_user?
+    email == GUEST_USER_EMAIL
   end
 end

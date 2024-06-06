@@ -1,1 +1,43 @@
-<h3>ユーザ情報詳細</h3>
+<div class="container">
+  <div class="row my-4">
+    <div class="col-3">
+      <% if @user.image.attached? %>
+        <%= image_tag @user.image, size: "150x150", class: "rounded-circle mx-auto d-block" %>
+      <% else %>
+        <%= image_tag 'no_image.jpg', size: "150x150", class: "rounded-circle mx-auto d-block" %>
+      <% end %>
+
+      <table class="table">
+        <tr>
+          <th>ユーザー名</th>
+          <td><%= @user.name %></td>
+        </tr>
+        <tr>
+          <th>投稿数</th>
+          <td><%= @user.posts.count %></td>
+        </tr>
+        <tr>
+          <th>登録日</th>
+          <td><%= @user.created_at.strftime('%Y/%m/%d') %></td>
+        </tr>
+      </table>
+    </div>
+
+    <div class="col-9">
+      <h3><%= @user.name %>さんの投稿一覧</h3>
+
+      <table class="table">
+        <tr>
+          <th>スポット名</th>
+          <th>場所の説明</th>
+          <th>コメント数</th>
+        </tr>
+        <tr>
+          <td><%#= @user.posts.shop_name %></td>
+          <td><%#= @user.posts.caption %></td>
+          <td><%#= @comments.count %></td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</div>

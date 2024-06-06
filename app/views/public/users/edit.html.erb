@@ -1,1 +1,37 @@
-<h3>ユーザ情報編集</h3>
+<div class="container">
+  <div class="row my-4">
+    <div class="col">
+      <div class="row">
+        <div class="col offset-1">
+          <h3>ユーザ情報編集</h3>
+          <%= render 'layouts/error', obj: @user %>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-6 mx-auto">
+          <%= form_with model: @user, url: user_path(@user.id), method: :patch, local: true do |f| %>
+            <div class="field mb-3">
+              <%= f.label :メールアドレス %><br />
+              <%= f.email_field :email, class: "form-control" %>
+            </div>
+
+            <div class="field mb-3">
+              <%= f.label '名前 ( ニックネーム )' %><br />
+              <%= f.text_field :name, autofocus: true, class: "form-control" %>
+            </div>
+
+            <div class="field mb-4">
+              <%= f.label :プロフィール画像 %><br />
+              <%= f.file_field :image %>
+            </div>
+
+            <div class="field">
+              <%= f.submit '更新する', class: "btn btn-sm btn-success form-control" %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

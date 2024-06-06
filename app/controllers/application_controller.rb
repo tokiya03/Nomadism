@@ -16,8 +16,10 @@ class ApplicationController < ActionController::Base
     about_path
   end
 
-  protected
+  add_flash_types :secondary, :success, :danger, :warning, :info, :light, :dark
 
+  # devise版ストロングパラメータ
+  protected
   def configure_permitted_parameters
     devise_parameter_sanitizer.permit(:sign_up, keys: [:name])
   end
