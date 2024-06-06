@@ -1,1 +1,44 @@
-<h3>投稿詳細</h3>
+<div class="container">
+  <div class="row my-4">
+    <div class="col">
+      <div class="row">
+        <div class="col">
+          <h3>投稿詳細</h3>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-5">
+          GoogleMapの地図
+        </div>
+
+        <div class="col">
+          <table class="table">
+            <tr>
+              <th>店名（場所の名前）</th>
+              <td><%= @post.name %></td>
+            </tr>
+            <tr>
+              <th>説明（感想など）</th>
+              <td><%= @post.caption %></td>
+            </tr>
+            <tr>
+              <th>住所</th>
+              <td><%= @post.address %></td>
+            </tr>
+            <tr>
+              <th>投稿に対するコメント</th>
+              <td><%= @post.comments.count %></td>
+            </tr>
+          </table>
+
+          <% if @post.user_id == current_user.id %>
+            <%= link_to '編集する', edit_post_path(@post.id), class: "btn btn-sm btn-success" %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+

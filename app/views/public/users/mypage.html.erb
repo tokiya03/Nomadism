@@ -40,16 +40,20 @@
       <table class="table">
         <tr>
           <th>投稿者</th>
-          <th>スポット名</th>
-          <th>場所の説明</th>
+          <th>店名</th>
+          <th>説明</th>
+          <th>住所</th>
           <th>コメント数</th>
         </tr>
+        <% @posts.each do |post| %>
         <tr>
-          <td><%#= @posts.user.image %><br /><%#= @posts.user.name %></td>
-          <td><%#= @posts.shop_name %></td>
-          <td><%#= @posts.caption %></td>
-          <td><%#= @posts.comments.count %></td>
+          <td><%= image_tag post.user.image, size: "80x80" %><br /><%= post.user.name %></td>
+          <td><%= post.name %></td>
+          <td><%= post.caption %></td>
+          <td><%= post.address %></td>
+          <td><%= post.comments.count %></td>
         </tr>
+        <% end %>
       </table>
     </div>
   </div>

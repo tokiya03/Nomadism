@@ -45,6 +45,9 @@
               <%= f.submit 'ログイン', class: "btn-lg btn-block btn-info my-2" %>
             <% end %>
 
+            <!-- ゲストユーザーとしてログインするためのボタン -->
+            <%= link_to 'ゲストログイン ( 閲覧用 )', users_guest_sign_in_path, method: :post, class: "btn-lg btn-block btn-secondary mb-2 text-decoration-none" %>
+
             <div class="d-flex justify-content-start">
               <%= render "public/shared/links" %>
             </div>

@@ -3,14 +3,15 @@
     <div class="col">
       <div class="row">
         <div class="col offset-1">
-          <h3>新規投稿フォーム</h3>
+          <%= puts @post.inspect %>
+          <h3>投稿編集フォーム</h3>
           <%= render 'layouts/error', obj: @post %>
         </div>
       </div>
 
       <div class="row">
         <div class="col-6 mx-auto">
-          <%= form_with model: @post, url: posts_path, method: :post, local: true do |f| %>
+          <%= form_with model: @post, url: post_path(@post.id), method: :patch, local: true do |f| %>
             <%= f.hidden_field :user_id, value: current_user.id %>
 
             <div class="field mb-3">
@@ -28,8 +29,19 @@
               <%= f.text_field :address, class: "form-control" %>
             </div>
 
-            <div class="field">
-              <%= f.submit '投稿する', class: "btn btn-sm btn-success form-control" %>
+            <div class="row">
+              <div class="col">
+                <!-- 投稿の更新ボタン -->
+                <div class="field">
+                  <%= f.submit '投稿内容を更新する', class: "btn btn-sm btn-success form-control" %>
+                </div>
+              </div>
+              <div class="col">
+                <!-- 投稿の削除ボタン -->
+                <div class="field">
+                      <%= link_to '投稿を削除する', post_path(@post.id), method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn btn-sm btn-danger form-control" %>
+                </div>
+              </div>
             </div>
           <% end %>
         </div>

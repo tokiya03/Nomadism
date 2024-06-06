@@ -78,11 +78,9 @@ ActiveRecord::Schema.define(version: 2024_06_04_132026) do
 
   create_table "posts", force: :cascade do |t|
     t.integer "user_id", null: false
-    t.string "shop_name", null: false
+    t.string "name", null: false
     t.text "caption", null: false
     t.string "address", null: false
-    t.float "latitude", null: false
-    t.float "longitude", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["user_id"], name: "index_posts_on_user_id"

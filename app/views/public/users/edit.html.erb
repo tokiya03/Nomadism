@@ -13,12 +13,12 @@
           <%= form_with model: @user, url: user_path(@user.id), method: :patch, local: true do |f| %>
             <div class="field mb-3">
               <%= f.label :メールアドレス %><br />
-              <%= f.email_field :email, class: "form-control" %>
+              <%= f.email_field :email, autofocus: true, class: "form-control" %>
             </div>
 
             <div class="field mb-3">
               <%= f.label '名前 ( ニックネーム )' %><br />
-              <%= f.text_field :name, autofocus: true, class: "form-control" %>
+              <%= f.text_field :name, class: "form-control" %>
             </div>
 
             <div class="field mb-4">

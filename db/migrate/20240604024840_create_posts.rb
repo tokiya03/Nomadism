@@ -6,8 +6,6 @@ class CreatePosts < ActiveRecord::Migration[6.1]
       t.string :name, null: false
       t.text :caption, null: false
       t.string :address, null: false
-      t.float :latitude, null: false
-      t.float :longitude, null: false
 
       t.timestamps
     end
