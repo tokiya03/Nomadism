@@ -29,19 +29,8 @@
               <%= f.text_field :address, class: "form-control" %>
             </div>
 
-            <div class="row">
-              <div class="col">
-                <!-- 投稿の更新ボタン -->
-                <div class="field">
-                  <%= f.submit '投稿内容を更新する', class: "btn btn-sm btn-success form-control" %>
-                </div>
-              </div>
-              <div class="col">
-                <!-- 投稿の削除ボタン -->
-                <div class="field">
-                      <%= link_to '投稿を削除する', post_path(@post.id), method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn btn-sm btn-danger form-control" %>
-                </div>
-              </div>
+            <div class="field">
+              <%= f.submit '更新する', class: "btn btn-sm btn-success form-control" %>
             </div>
           <% end %>
         </div>

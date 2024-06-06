@@ -36,9 +36,8 @@ class Public::PostsController < ApplicationController
   end
 
   def update
-
     @post = Post.find(params[:id])
-    @post.user.id = current_user.id
+    @post.user_id = current_user.id
     if @post.update(post_parms)
       flash[:success] = '投稿の更新に成功しました。'
       redirect_to post_path(@post.id)
@@ -51,7 +50,7 @@ class Public::PostsController < ApplicationController
 
   def destroy
     @post = Post.find(params[:id])
-    @post.user.id = current_user.id
+    @post.user_id = current_user.id
     if @post.destroy
       flash[:success] = '投稿の削除に成功しました。'
       redirect_to posts_path
@@ -69,7 +68,7 @@ class Public::PostsController < ApplicationController
   end
 
   def check_guest_user
-    if current_user.email = 'guest@example.jp'
+    if current_user.email == 'guest@example.jp'
       flash[:info] = 'ゲストユーザーは投稿画面へ遷移できません。'
       redirect_to posts_path
     end

@@ -26,8 +26,12 @@
               <%= f.file_field :image %>
             </div>
 
-            <div class="field">
+            <div class="field mb-4">
               <%= f.submit '更新する', class: "btn btn-sm btn-success form-control" %>
+            </div>
+
+            <div class="field">
+              <%= link_to '退会する', user_path(@user.id), method: :delete, "data-confirm" => "本当に退会しますか？", class: "btn btn-sm btn-danger form-control" %>
             </div>
           <% end %>
         </div>

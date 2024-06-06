@@ -41,10 +41,20 @@ class Public::UsersController < ApplicationController
     end
   end
 
-  def confirm
-  end
+  # 論理削除する時の記述
+  # def confirm
+  # end
+  #
+  # def withdraw
+  # end
 
-  def withdraw
+  # 物理削除する時の記述
+  def destroy
+    @user = User.find(params[:id])
+    @user.id = current_user.id
+    @user.destroy
+    flash[:info] = '退会処理が完了しました。'
+    redirect_to new_user_registration_path
   end
 
 

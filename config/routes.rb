@@ -14,7 +14,7 @@ Rails.application.routes.draw do
     root to: 'homes#top'
     get '/about' => 'homes#about'
 
-    resources :users, only: [:edit, :show, :update]
+    resources :users, only: [:edit, :show, :update, :destroy]
     get 'user/mypage' => 'users#mypage', as: 'mypage'
     patch 'user/confirm' => 'users#confirm', as: 'withdraw_confirm'
     patch 'user/withdraw' => 'users#withdraw', as: 'withdraw_user'
