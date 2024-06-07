@@ -1,0 +1,40 @@
+<div class="col-3">
+  <%= image_tag user.get_profile_image(150, 150), class: "rounded-circle mx-auto d-block" %>
+
+  <!-- ゲストユーザーの場合は、プロフィール編集ボタンを非表示 -->
+  <% unless user.guest_user? %>
+    <!-- ユーザーIDが現在のユーザーIDと同じ場合は、プロフィール編集ボタンを表示 -->
+    <% if user.id == current_user.id %>
+     <div class="row my-4">
+       <div class="col">
+         <%= link_to edit_user_path(user), class: "btn btn-outline-secondary btn-block edit_user_#{user.id}" do %>
+            <i class="fa-solid fa-user-pen"></i>
+          <% end %>
+       </div>
+     </div>
+    <% end %>
+  <% end %>
+
+  <div class="row border-top border-bottom">
+    <div class="col py-3 font-weight-bold">ユーザー名</div>
+    <div class="col py-3 text-right"><%= user.name %></div>
+  </div>
+  <div class="row border-bottom">
+    <div class="col py-2 font-weight-bold">投稿数</div>
+    <!-- ゲストユーザーの場合は情報を非表示 -->
+    <% unless user.guest_user? %>
+      <div class="col py-3 text-right"><%= number_with_delimiter(user.posts.count) %></div>
+    <% else %>
+      <div class="col py-3 text-center">ー</div>
+    <% end %>
+  </div>
+  <div class="row border-bottom">
+    <div class="col py-3 font-weight-bold">登録日</div>
+    <!-- ゲストユーザーの場合は情報を非表示 -->
+    <% unless user.guest_user? %>
+      <div class="col py-3 text-right"><%= user.created_at.strftime('%Y/%m/%d') %></div>
+    <% else %>
+      <div class="col py-3 text-center">ー</div>
+    <% end %>
+  </div>
+</div>

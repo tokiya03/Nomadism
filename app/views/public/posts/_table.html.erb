@@ -1,0 +1,22 @@
+<div class="row border-top border-bottom">
+    <div class="col-2 p-3 font-weight-bold">投稿者</div>
+    <div class="col-2 p-3 font-weight-bold">スポット名</div>
+    <div class="col-4 p-3 font-weight-bold">説明</div>
+    <div class="col-2 p-3 font-weight-bold">住所</div>
+    <div class="col-2 p-3 font-weight-bold">コメント数</div>
+  </div>
+
+  <% posts.each do |post| %>
+    <div class="row border-bottom">
+      <div class="col-2 p-2">
+        <%= link_to user_path(post.user_id), class: "text-dark text-decoration-none" do %>
+          <%= image_tag post.user.get_profile_image(80, 80), class: "rounded-circle" %><br /><%= post.user.name  %>
+        <% end %>
+      </div>
+      <div class="col-2 py-2"><%= link_to post.name, post_path(post.id) %></div>
+      <div class="col-4 py-2"><%= post.caption.truncate(47) %></div>
+      <div class="col-2 py-2"><%= post.address %></div>
+      <div class="col-2 py-2 text-center"><%= number_with_delimiter(post.comments.count) %></div>
+    </div>
+  <% end %>
+</div>

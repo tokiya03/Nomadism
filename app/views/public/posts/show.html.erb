@@ -7,12 +7,12 @@
         </div>
       </div>
 
-      <div class="row">
-        <div class="col-5">
+      <div class="row justify-content-between">
+        <div class="col-6 border">
           GoogleMapの地図
         </div>
 
-        <div class="col">
+        <div class="col-5">
           <table class="table">
             <tr>
               <th>投稿者</th>
@@ -45,6 +45,17 @@
             </div>
           <% end %>
         </div>
+
+        <!-- コメントのための記述 -->
+        <!--<div class="row">-->
+        <!--  <div class="col">-->
+            <%#= form_with model: "#", url: "#", method: :post, local: false do %>
+              <%#= f.text_area :comment, placeholder: 'コメントを入力してください。' %>
+              <%#= f.submit 'コメントを送信', class: "btn btn-sm btn-success" %>
+            <%# end %>
+        <!--  </div>-->
+        <!--</div>-->
+
       </div>
     </div>
   </div>

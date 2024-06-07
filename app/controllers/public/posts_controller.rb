@@ -19,7 +19,8 @@ class Public::PostsController < ApplicationController
   end
 
   def index
-    @posts = Post.all
+    @user = current_user
+    @posts = Post.all.order(id: 'desc')
   end
 
   def show
@@ -29,7 +30,7 @@ class Public::PostsController < ApplicationController
   def edit
     @post = Post.find(params[:id])
     if @post.user_id != current_user.id
-      flash[:info] = '投稿者以外は当投稿の編集画面に遷移できません。'
+      flash[:info] = '投稿者以外は編集画面に遷移できません。'
       redirect_to posts_path
     end
   end

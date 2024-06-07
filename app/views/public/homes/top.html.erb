@@ -20,6 +20,17 @@
       <% if user_signed_in? %>
         <h5>新着投稿</h5>
 
+        <div class="row">
+          <% @posts.each do |post| %>
+
+              <div class="col-2 border mr-4">
+              <p>場所名：<%= post.name %></p>
+              <p>説明：<%= post.caption %></p>
+              <p>住所：<%= post.address %></p>
+            </div>
+          <% end %>
+        </div>
+
         <div class="d-flex justify-content-end">
           <%= link_to '全ての投稿を見る >', posts_path %>
         </div>

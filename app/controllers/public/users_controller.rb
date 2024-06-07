@@ -56,7 +56,7 @@ class Public::UsersController < ApplicationController
   # ストロングパラメータ
   private
   def user_params
-    params.require(:user).permit(:name, :email, :image)
+    params.require(:user).permit(:name, :email, :profile_image)
   end
 
   def ensure_guest_user
