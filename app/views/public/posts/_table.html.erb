@@ -10,7 +10,13 @@
     <div class="row border-bottom">
       <div class="col-2 p-2">
         <%= link_to user_path(post.user_id), class: "text-dark text-decoration-none" do %>
-          <%= image_tag post.user.get_profile_image(80, 80), class: "rounded-circle" %><br /><%= post.user.name  %>
+          <%= image_tag post.user.get_profile_image(60, 60), class: "rounded-circle mx-auto d-block" %>
+          <div class="row mt-1">
+            <div class="col text-center">
+              <%= post.user.name %>
+            </div>
+          </div>
+
         <% end %>
       </div>
       <div class="col-2 py-2"><%= link_to post.name, post_path(post.id) %></div>

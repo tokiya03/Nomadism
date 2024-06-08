@@ -12,18 +12,18 @@
   </head>
 
   <body>
-    <header class="border">
+    <header class="border-bottom">
       <%= render 'layouts/header' %>
     </header>
 
-    <main>
+    <main style="min-height: calc(678px);">
       <!-- フラッシュメッセージを表示 -->
       <%= render 'layouts/flash-message' %>
 
       <%= yield %>
     </main>
 
-    <footer class="border">
+    <footer class="border-top">
       <%= render 'layouts/footer' %>
     </footer>
   </body>
