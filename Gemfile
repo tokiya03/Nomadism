@@ -60,7 +60,14 @@ gem 'kaminari', '~> 1.2.1'
 gem 'dotenv-rails'
 gem 'geocoder'
 
-gem 'dotenv-rails'
+group :development, :test do
+  # Call 'byebug' anywhere in the code to stop execution and get a debugger console
+  gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+
+  gem 'pry-byebug'
+  gem 'pry-rails'
+end
+
 group :production do
   gem 'mysql2'
 end
