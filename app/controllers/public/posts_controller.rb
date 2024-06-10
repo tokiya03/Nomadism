@@ -54,7 +54,7 @@ class Public::PostsController < ApplicationController
     if@post.user_id = current_user.id
       @post.destroy
       flash[:success] = '投稿の削除に成功しました。'
-      redirect_to posts_path
+      redirect_to mypage_path
     else
       flash[:danger] = '投稿の削除に失敗しました。'
       request.referer
