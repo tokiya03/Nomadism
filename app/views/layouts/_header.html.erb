@@ -1,12 +1,14 @@
+<!-- 画面幅がlgサイズ(992px)以下の場合、ハンバーガーメニューに切り替えて表示 -->
 <nav class="navbar navbar-expand-lg navbar-light">
   <div class="container">
     <%= link_to root_path, class: "navbar-brand ml-3 logo" do %>
       <%= image_tag 'logo.jpg', size: "40x40" %>Nomadism
     <% end %>
 
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
+    <%= button_tag(type: "button", class: "navbar-toggler", data: {toggle: "collapse", target: "#navbarNavDropdown", controls: "navbarNavDropdown", expanded: "false", label: "Toggle navigation"}) do %>
+      <%= content_tag(:span, '', class: "navbar-toggler-icon") %>
+    <% end %>
+
     <div class="collapse navbar-collapse" id="navbarNavDropdown">
       <ul class="navbar-nav ml-auto">
         <li class="nav-item">
@@ -50,5 +52,9 @@
         <% end %>
       </ul>
     </div>
+
+    <!-- 検索窓を表示 -->
+    <%= render 'layouts/search' %>
+
   </div>
 </nav>
