@@ -12,52 +12,87 @@
           GoogleMapの地図
         </div>
 
-        <div class="col-6">
-          <table class="table">
-            <tr>
-              <th>投稿者</th>
-              <td><%= link_to @post.user.name, user_path(@post.user_id) %></td>
-            </tr>
-            <tr>
-              <th>店名（場所の名前）</th>
-              <td><%= @post.name %></td>
-            </tr>
-            <tr>
-              <th>説明（感想など）</th>
-              <td><%= @post.caption %></td>
-            </tr>
-            <tr>
-              <th>住所</th>
-              <td><%= @post.address %></td>
-            </tr>
-            <tr>
-              <th>投稿に対するコメント</th>
-              <td><%= @post.comments.count %></td>
-            </tr>
-          </table>
+        <div class="col-5">
+          <div class="row">
+            <div class="col">
+              <div class="row border-top">
+                <div class="col-5">投稿者</div>
+                <div class="col"><%= link_to @post.user.name, user_path(@post.user_id) %></div>
+              </div>
+              <div class="row border-top">
+                <div class="col-5">店名（場所の名前）</div>
+                <div class="col"><%= @post.name %></div>
+              </div>
+              <div class="row border-top">
+                <div class="col-5">説明（感想など）</div>
+                <div class="col"><%= @post.caption %></div>
+              </div>
+              <div class="row border-top">
+                <div class="col-5">住所</div>
+                <div class="col"><%= @post.address %></div>
+              </div>
+            </div>
+          </div>
 
           <% if @post.user_id == current_user.id %>
-            <div class="row">
+            <div class="row mt-4">
               <div class="col d-flex justify-content-end">
                 <%= link_to '編集する', edit_post_path(@post.id), class: "btn btn-sm btn-success" %>
               </div>
             </div>
           <% end %>
+
+          <!-- コメントのための記述 -->
+          <% @post.comments.each do |comment| %>
+            <div class="row">
+              <div class="col border py-2 mt-2">
+                <div class="row d-flex justify-content-between">
+                  <div class="col">
+                    <%= comment.id %>: #<%= comment.user.name %>
+                  </div>
+                  <div class="col text-right">
+                    <%= comment.created_at.strftime('%Y/%-m/%-d' + ' ' + '%-H:%-M' + ' ' + '%p') %>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col mt-2">
+                    <!-- コメントの内容を表示 -->
+                    <%= comment.comment %>
+                  </div>
+                </div>
+
+
+                <% if comment.user == current_user %>
+                  <div class="row mt-2">
+                    <div class="col d-flex justify-content-end">
+                      <%= link_to "削除", post_comment_path(comment.post, comment), method: :delete, "data-confirm" => "コメントを削除しますか？", class: "btn btn-sm btn-danger" %>
+                    </div>
+                  </div>
+
+                <% end %>
+              </div>
+            </div>
+          <% end %>
+
+          <div class="row">
+            <div class="col mt-4 pr-0 pl-3">
+              <%= form_with model: [@post, @comment] do |f| %>
+                <div class="row">
+                  <div class="col d-flex justify-content-end">
+                    <%= f.text_area :comment, rows: '3', placeholder: "コメントを入力してください", class: "w-100" %>
+                  </div>
+                </div>
+                <div class="row mt-3">
+                  <div class="col d-flex justify-content-between">
+                    コメント数：<%= @post.comments.count %>
+                    <%= f.submit "送信する", class: "bnt btn-sm btn-success" %>
+                  </div>
+                </div>
+              <% end %>
+            </div>
+          </div>
         </div>
-
-        <!-- コメントのための記述 -->
-        <!--<div class="row">-->
-        <!--  <div class="col">-->
-            <%#= form_with model: "#", url: "#", method: :post, local: false do %>
-              <%#= f.text_area :comment, placeholder: 'コメントを入力してください。' %>
-              <%#= f.submit 'コメントを送信', class: "btn btn-sm btn-success" %>
-            <%# end %>
-        <!--  </div>-->
-        <!--</div>-->
-
       </div>
     </div>
   </div>
 </div>
-
-
