@@ -31,8 +31,19 @@ Rails.application.routes.draw do
   # 管理者用
   # URL /admin/sign_in ...
   devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
-    sessions: 'dmin/sessions'
+    sessions: 'admin/sessions'
   }
+
+  namespace :admin do
+    root to: 'homes#top'
+
+    resources :users, only: [:index, :show, :edit, :update, :destroy]
+    resources :posts, only: [:index, :show, :destroy] do
+      resources :comments, only: [:destroy]
+    end
+
+    get 'search' => 'searches#search'
+  end
 
 
   # namespace :public do
@@ -44,19 +55,6 @@ Rails.application.routes.draw do
   # namespace :admin do
   #   get 'groups/index'
   #   get 'groups/show'
-  # end
-  # namespace :admin do
-  #   get 'posts/index'
-  #   get 'posts/show'
-  # end
-  # namespace :admin do
-  #   get 'homes/top'
-  # end
-  # namespace :admin do
-  #   get 'users/index'
-  #   get 'users/show'
-  #   get 'users/edit'
-  #   get 'users/update'
   # end
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

@@ -10,6 +10,7 @@
 puts "seedの実行を開始しました"
 
 ## テストデータ用
+# デフォルトのユーザーを作成
 Justin = User.find_or_create_by!(email: "justin@example.jp") do |user|
   user.name = "Justin"
   user.password = "password"
@@ -58,7 +59,7 @@ Alice = User.find_or_create_by!(email: "alice@example.jp") do |user|
   user.profile_image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/sample-user8.jpg"), filename:"sample-user8.jpg")
 end
 
-
+# デフォルトの投稿を作成
 Post.find_or_create_by!(name: "テストCafe") do |post|
   post.caption = "充電可能なコンセントと無料Wi-Fiが備わっているのと、カフェラテが美味しかったので、とても作業が捗りました。"
   post.address = "東京都世田谷区某所"
@@ -105,6 +106,14 @@ Post.find_or_create_by!(name: "不思議の森コーヒー") do |post|
   post.caption = "広い店内でテーブル席と1人席には充電可能なコンセントがあって、無料で使えるWi-Fiがあるので、落ち着いて作業することができます。"
   post.address = "福岡県北九州市某所"
   post.user = Alice
+end
+
+## 管理者ログイン用
+admin_email = ENV["ADMIN_EMAIL"]
+admin_password = ENV["ADMIN_PASSWORD"]
+
+Admin = Admin.find_or_create_by!(email: admin_email) do |user|
+  user.password = admin_password
 end
 
 puts "seedの実行が完了しました"

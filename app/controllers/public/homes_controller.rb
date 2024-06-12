@@ -1,6 +1,6 @@
 class Public::HomesController < ApplicationController
   def top
-    @posts = Post.all.order(id: 'desc').limit(4)
+    @posts = Post.all
   end
 
   def about

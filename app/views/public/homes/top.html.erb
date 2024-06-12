@@ -23,7 +23,7 @@
             <h5>新着投稿</h5>
 
             <div class="row">
-              <% @posts.each do |post| %>
+              <% @posts.last(4).each do |post| %>
 
                   <div class="col-2 border mr-4">
                   <p>場所名：<%= post.name %></p>
