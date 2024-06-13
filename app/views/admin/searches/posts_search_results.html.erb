@@ -3,7 +3,7 @@
     <div class="col">
       <div class="row">
         <div class="col">
-          <h3>"<%= @search_query %>" を含む投稿一覧</h3>
+          <h3>"<%= @search_query %>" を含む投稿一覧（管理者）</h3>
         </div>
       </div>
       <% if @no_results %>
@@ -20,7 +20,7 @@
 
           <div class="col ml-2 overflow-auto" style="height: 600px;">
             <% @posts.each do |post| %>
-              <%= link_to post_path(post.id), class: "text-dark text-decoration-none" do %>
+              <%= link_to admin_post_path(post.id), class: "text-dark text-decoration-none" do %>
                 <div class="row mb-2">
                   <div class="col border py-1">
                     <div class="row">

@@ -1,5 +1,6 @@
 class Public::CommentsController < ApplicationController
   before_action :authenticate_user!
+  before_action :check_guest_user, only: [:create]
 
   def create
     post = Post.find(params[:post_id])
@@ -18,5 +19,13 @@ class Public::CommentsController < ApplicationController
   private
   def comment_params
     params.require(:comment).permit(:comment)
+  end
+
+  def check_guest_user
+    post = Post.find(params[:post_id])
+    if current_user.email == 'guest@example.jp'
+      flash[:info] = 'ゲストユーザーはコメントできません。'
+      redirect_to post_path(post.id)
+    end
   end
 end

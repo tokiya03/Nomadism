@@ -20,7 +20,7 @@
         <div class="col ml-2 overflow-auto" style="height: 600px;">
           <% @posts.each do |post| %>
             <%= link_to post_path(post.id), class: "text-dark text-decoration-none" do %>
-              <div class="row mb-2">
+              <div class="row posts">
                 <div class="col border py-1">
                   <div class="row">
                     <div class="col-3 pr-0">スポット名：</div>
@@ -34,13 +34,14 @@
                     <div class="col-3 pr-0">住　所　　：</div>
                     <div class="col pl-0"><%= post.address %></div>
                   </div>
-                  <div class="row">
-                    <div class="col d-flex justify-content-end">
-                      <%= link_to user_path(post.user_id), class: "text-dark text-decoration-none" do %>
-                        <%= image_tag post.user.get_profile_image(30, 30), class: "rounded-circle" %> <%= post.user.name %>
-                      <% end %>
+                  <!-- ユーザー名と画像以外は投稿詳細へ遷移させたいけど、仕様上不可 -->
+                  <%= link_to user_path(post.user_id), class: "text-dark text-decoration-none" do %>
+                    <div class="row">
+                      <div class="col d-flex justify-content-end">
+                        <%= image_tag post.user.get_profile_image(30, 30), class: "rounded-circle mr-1" %> <%= post.user.name %>
+                      </div>
                     </div>
-                  </div>
+                  <% end %>
                 </div>
               </div>
             <% end %>

@@ -10,3 +10,42 @@
 .logo {
   font-family: Futura, sans-serif;
 }
+
+.search_notice {
+  font-size: 11px;
+}
+
+.posts {
+  margin-bottom: 5px;
+}
+
+.posts:last-child {
+  margin-bottom: 0;
+}
+
+.new_users {
+  padding: 0;
+  margin-bottom: 0.25rem;
+}
+
+.new_users,
+.new_posts{
+  margin: 0 0.4rem 0.3rem 0;
+}
+
+.new_users:nth-child(3),
+.new_users:nth-child(4),
+.new_posts:nth-child(3),
+.new_posts:nth-child(4) {
+  margin-bottom: 0;
+}
+
+.pagination{
+  margin: 20px auto 0;
+  display: flex;
+  justify-content: center;
+}
+
+.pagination a, span {
+  padding: 0 3px;
+}

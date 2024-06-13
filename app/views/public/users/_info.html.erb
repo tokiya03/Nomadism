@@ -1,4 +1,4 @@
-<div class="col-3">
+<div class="col-3 mt-2">
   <%= image_tag user.get_profile_image(150, 150), class: "rounded-circle mx-auto d-block mb-4" %>
 
   <!-- ゲストユーザーの場合は、プロフィール編集ボタンを非表示 -->
@@ -8,7 +8,7 @@
      <div class="row">
        <div class="col">
          <%= link_to edit_user_path(user.id), class: "btn btn-outline-secondary btn-block edit_user_#{user.id}" do %>
-            <i class="fa-solid fa-user-pen"></i>
+            <i class="fa-solid fa-user-pen"></i> ユーザー情報を編集
           <% end %>
        </div>
      </div>
@@ -20,7 +20,7 @@
     <div class="col py-3 text-right"><%= user.name %></div>
   </div>
   <div class="row border-bottom">
-    <div class="col py-2 font-weight-bold">投稿数</div>
+    <div class="col py-3 font-weight-bold">投稿数</div>
     <!-- ゲストユーザーの場合は情報を非表示 -->
     <% unless user.guest_user? %>
       <div class="col py-3 text-right"><%= number_with_delimiter(user.posts.count) %></div>
