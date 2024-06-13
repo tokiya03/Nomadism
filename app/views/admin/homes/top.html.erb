@@ -1,89 +1,78 @@
 <div class="container">
   <div class="row my-4">
     <div class="col">
-
       <div class="row">
         <div class="col">
           <h3>マイページ（管理者）</h3>
         </div>
       </div>
 
-      <div class="row">
+      <div class="row mt-2">
         <div class="col-3">
           <%= image_tag @admin.get_profile_image(150, 150), class: "rounded-circle mx-auto d-block mb-4" %>
           ※ 管理者でログインしています。
         </div>
+
         <div class="col">
           <div class="row">
             <div class="col">
               <h6>▼現在の状況</h6>
+              <div class="row">
+                <div class="col-3 border py-2">会員ユーザー数</div>
+                <div class="col-2 border py-2 text-right"><%= number_with_delimiter(User.where(is_active: true).count) %></div>
+              </div>
+              <!-- 論理削除を実装したら以下を有効化 -->
+              <!--<div class="row">-->
+              <!--  <div class="col-3 border py-2">退会ユーザー数</div>-->
+              <!--  <div class="col-2 border py-2 text-right"><%#= number_with_delimiter(User.where(is_active: false).count) %></div>-->
+              <!--</div>-->
+              <div class="row">
+                <div class="col-3 border py-2">合計ユーザー数</div>
+                <div class="col-2 border py-2 text-right"><%= number_with_delimiter(@users.count) %></div>
+              </div>
+              <div class="row">
+                <div class="col-3 border py-2">投稿数</div>
+                <div class="col-2 border py-2 text-right"><%= number_with_delimiter(@posts.count) %></div>
+              </div>
             </div>
           </div>
-          <div class="row">
-            <div class="col-3 border py-2">会員ユーザー数</div>
-            <div class="col-2 border py-2 text-right"><%= User.where(is_active: true).count %></div>
-          </div>
-          <!-- 論理削除を実装したら以下を有効化 -->
-          <!--<div class="row">-->
-          <!--  <div class="col-3 border py-2">退会ユーザー数</div>-->
-          <!--  <div class="col-2 border py-2 text-right"><%#= User.where(is_active: false).count %></div>-->
-          <!--</div>-->
-          <div class="row">
-            <div class="col-3 border py-2">合計ユーザー数</div>
-            <div class="col-2 border py-2 text-right"><%= @users.count %></div>
-          </div>
-          <div class="row">
-            <div class="col-3 border py-2">投稿数</div>
-            <div class="col-2 border py-2 text-right"><%= @posts.count %></div>
-          </div>
-
 
           <div class="row mt-3">
             <div class="col">
               <h6>▼新規登録ユーザー</h6>
+              <div class="row">
+                <% @users.last(4).each do |user| %>
+                  <%= link_to admin_user_path(user.id), class: "col-5 text-dark text-decoration-none new_users" do %>
+                    <div class="col border py-2 d-flex">
+                        <div class="d-flex align-items-center">
+                          <%= image_tag user.get_profile_image(50, 50), class: "rounded-circle mx-auto d-block" %>
+                        </div>
+                        <div class="ml-3">
+                          ユーザー名：<%= user.name %><br />
+                          登録日　　：<%= user.created_at.strftime('%Y/%m/%d') %>
+                        </div>
+                    </div>
+                  <% end %>
+                <% end %>
+              </div>
             </div>
-          </div>
-          <div class="row">
-            <% @users.last(4).each do |user| %>
-              <%= link_to admin_user_path(user.id), class: "text-dark text-decoration-none" do %>
-                <div class="col border py-2 d-flex">
-                    <div class="d-flex align-items-center">
-                      <%= image_tag user.get_profile_image(50, 50), class: "rounded-circle mx-auto d-block" %>
-                    </div>
-                    <div class="ml-3">
-                      ユーザー名：<%= user.name %><br />
-                      連　絡　先：<%= user.email %><br />
-                      登　録　日：<%= user.created_at.strftime('%Y/%m/%d') %>
-                    </div>
-                </div>
-              <% end %>
-            <% end %>
           </div>
 
           <div class="row mt-3">
             <div class="col">
               <h6>▼最新の投稿</h6>
+              <div class="row">
+                <% @posts.last(4).each do |post| %>
+                  <%= link_to admin_post_path(post.id), class: "col-5 px-0 text-dark text-decoration-none new_posts" do %>
+                    <div class="col border py-2 d-flex">
+                      スポット名：<%= post.name %><br />
+                      住　所　　：<%= post.address %><br />
+                      投稿日　　：<%= post.created_at.strftime('%Y/%m/%d') %>
+                    </div>
+                  <% end %>
+                <% end %>
+              </div>
             </div>
-          </div>
-          <div class="row">
-            <% @posts.last(4).each do |post| %>
-              <%= link_to admin_post_path(post.id), class: "text-dark text-decoration-none" do %>
-                <div class="col border ml-2">
-                  <div class="row">
-                    <div class="col">スポット名：</div>
-                    <div class="col"><%= post.name %></div>
-                  </div>
-                  <div class="row">
-                    <div class="col">住　所　　：</div>
-                    <div class="col"><%= post.address %></div>
-                  </div>
-                  <div class="row">
-                    <div class="col">投稿日時　：</div>
-                    <div class="col"><%= post.created_at.strftime('%Y/%m/%d(%a)' + '　' + '%H:%M') %></div>
-                  </div>
-                </div>
-              <% end %>
-            <% end %>
           </div>
         </div>
       </div>

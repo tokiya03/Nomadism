@@ -3,7 +3,7 @@
     <%= render 'public/users/info', user: @user %>
 
     <div class="col-9">
-      <h3>わたしの投稿一覧</h3>
+      <h3><%= @user.name %>の投稿一覧</h3>
 
       <%= render 'public/posts/table', posts: @posts %>
     </div>

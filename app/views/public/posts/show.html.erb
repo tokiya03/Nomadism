@@ -7,8 +7,8 @@
         </div>
       </div>
 
-      <div class="row justify-content-between">
-        <div class="col-6 border">
+      <div class="row justify-content-between mt-2">
+        <div class="col-6 border" style="height: 500px;">
           GoogleMapの地図
         </div>
 
@@ -16,30 +16,30 @@
           <div class="row">
             <div class="col">
               <div class="row border-top">
-                <div class="col-5 py-2">投稿者</div>
-                <div class="col py-2"><%= link_to @post.user.name, user_path(@post.user_id) %></div>
+                <div class="col-5 py-3">投稿者</div>
+                <div class="col py-3"><%= link_to @post.user.name, user_path(@post.user_id) %></div>
               </div>
               <div class="row border-top">
-                <div class="col-5 py-2">店名（場所の名前）</div>
-                <div class="col py-2"><%= @post.name %></div>
+                <div class="col-5 py-3">店名（場所の名前）</div>
+                <div class="col py-3"><%= @post.name %></div>
               </div>
               <div class="row border-top">
-                <div class="col-5 py-2">説明（感想など）</div>
-                <div class="col py-2"><%= @post.caption %></div>
+                <div class="col-5 py-3">説明（感想など）</div>
+                <div class="col py-3"><%= @post.caption %></div>
               </div>
               <div class="row border-top">
-                <div class="col-5 py-2">住所</div>
-                <div class="col py-2"><%= @post.address %></div>
+                <div class="col-5 py-3">住所</div>
+                <div class="col py-3"><%= @post.address %></div>
               </div>
               <div class="row border-top">
-                <div class="col-5 py-2">投稿日時</div>
-                <div class="col py-2"><%= @post.created_at.strftime('%Y/%m/%d(%a)' + '　' + '%H:%M') %></div>
+                <div class="col-5 py-3">投稿日時</div>
+                <div class="col py-3"><%= @post.created_at.strftime('%Y/%m/%d(%a)' + '　' + '%H:%M') %></div>
               </div>
             </div>
           </div>
 
           <% if @post.user_id == current_user.id %>
-            <div class="row mt-4">
+            <div class="row">
               <div class="col d-flex justify-content-end">
                 <%= link_to '編集する', edit_post_path(@post.id), class: "btn btn-sm btn-success" %>
               </div>
@@ -64,37 +64,36 @@
                     <%= comment.comment %>
                   </div>
                 </div>
-
-
                 <% if comment.user == current_user %>
-                  <div class="row mt-2">
+                  <div class="row">
                     <div class="col d-flex justify-content-end">
                       <%= link_to "削除", post_comment_path(comment.post, comment), method: :delete, "data-confirm" => "コメントを削除しますか？", class: "btn btn-sm btn-danger" %>
                     </div>
                   </div>
-
                 <% end %>
               </div>
             </div>
           <% end %>
 
-          <div class="row">
-            <div class="col mt-4 pr-0 pl-3">
-              <%= form_with model: [@post, @comment] do |f| %>
-                <div class="row">
-                  <div class="col d-flex justify-content-end">
-                    <%= f.text_area :comment, rows: '3', placeholder: "コメントを入力してください", class: "w-100" %>
+          <% unless current_user.guest_user? %>
+            <div class="row">
+              <div class="col mt-2 pr-0 pl-3">
+                <%= form_with model: [@post, @comment] do |f| %>
+                  <div class="row">
+                    <div class="col d-flex justify-content-end">
+                      <%= f.text_area :comment, rows: '3', placeholder: "コメントを入力してください", class: "w-100" %>
+                    </div>
                   </div>
-                </div>
-                <div class="row mt-3">
-                  <div class="col d-flex justify-content-between">
-                    コメント数：<%= @post.comments.count %>
-                    <%= f.submit "送信する", class: "bnt btn-sm btn-success" %>
+                  <div class="row mt-2">
+                    <div class="col d-flex justify-content-between">
+                      コメント数：<%= @post.comments.count %>
+                      <%= f.submit "送信する", class: "bnt btn-sm btn-success" %>
+                    </div>
                   </div>
-                </div>
-              <% end %>
+                <% end %>
+              </div>
             </div>
-          </div>
+          <% end %>
         </div>
       </div>
     </div>

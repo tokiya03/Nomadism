@@ -10,56 +10,68 @@
 puts "seedの実行を開始しました"
 
 ## テストデータ用
-# デフォルトのユーザーを作成
+# デフォルトのユーザーを作成（10ユーザー）
 Justin = User.find_or_create_by!(email: "justin@example.jp") do |user|
-  user.name = "Justin"
+  user.name = "ジャスティン"
   user.password = "password"
   user.profile_image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/sample-user1.jpg"), filename:"sample-user1.jpg")
 end
 
 Sara = User.find_or_create_by!(email: "Sara@example.jp") do |user|
-  user.name = "Sara"
+  user.name = "サラ"
   user.password = "password"
   user.profile_image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/sample-user2.jpg"), filename:"sample-user2.jpg")
 end
 
 Lucas = User.find_or_create_by!(email: "lucas@example.jp") do |user|
-  user.name = "Lucas"
+  user.name = "ルーカス"
   user.password = "password"
   user.profile_image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/sample-user3.jpg"), filename:"sample-user3.jpg")
 end
 
 Selena = User.find_or_create_by!(email: "selena@example.jp") do |user|
-  user.name = "Selena"
+  user.name = "セレナ"
   user.password = "password"
   user.profile_image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/sample-user4.jpg"), filename:"sample-user4.jpg")
 end
 
 Tom = User.find_or_create_by!(email: "tom@example.jp") do |user|
-  user.name = "Tom"
+  user.name = "トム"
   user.password = "password"
   user.profile_image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/sample-user5.jpg"), filename:"sample-user5.jpg")
 end
 
 Risa = User.find_or_create_by!(email: "risa@example.jp") do |user|
-  user.name = "Risa"
+  user.name = "リサ"
   user.password = "password"
   user.profile_image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/sample-user6.jpg"), filename:"sample-user6.jpg")
 end
 
 James = User.find_or_create_by!(email: "james@example.jp") do |user|
-  user.name = "James"
+  user.name = "ジェームズ"
   user.password = "password"
   user.profile_image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/sample-user7.jpg"), filename:"sample-user7.jpg")
 end
 
 Alice = User.find_or_create_by!(email: "alice@example.jp") do |user|
-  user.name = "Alice"
+  user.name = "アリス"
   user.password = "password"
   user.profile_image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/sample-user8.jpg"), filename:"sample-user8.jpg")
 end
 
-# デフォルトの投稿を作成
+Eito = User.find_or_create_by!(email: "eito@example.jp") do |user|
+  user.name = "瑛人"
+  user.password = "password"
+  user.profile_image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/sample-user9.jpg"), filename:"sample-user9.jpg")
+end
+
+Asami = User.find_or_create_by!(email: "asami@example.jp") do |user|
+  user.name = "麻美"
+  user.password = "password"
+  user.profile_image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/sample-user10.jpg"), filename:"sample-user10.jpg")
+end
+
+# デフォルトの投稿を作成（10件）
 Post.find_or_create_by!(name: "テストCafe") do |post|
   post.caption = "充電可能なコンセントと無料Wi-Fiが備わっているのと、カフェラテが美味しかったので、とても作業が捗りました。"
   post.address = "東京都世田谷区某所"
@@ -107,6 +119,19 @@ Post.find_or_create_by!(name: "不思議の森コーヒー") do |post|
   post.address = "福岡県北九州市某所"
   post.user = Alice
 end
+
+Post.find_or_create_by!(name: "777 Lounge") do |post|
+  post.caption = "晴れた日には開放感抜群の景色が広がるお店で、外を見るだけで気分転換になりました。"
+  post.address = "愛媛県大洲市某所"
+  post.user = Eito
+end
+
+Post.find_or_create_by!(name: "Galette") do |post|
+  post.caption = "おしゃれなで広々とした店内で、とても過ごしやすいところでした。"
+  post.address = "東京都渋谷区某所"
+  post.user = Asami
+end
+
 
 ## 管理者ログイン用
 admin_email = ENV["ADMIN_EMAIL"]
