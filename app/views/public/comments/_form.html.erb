@@ -1,0 +1,21 @@
+<% unless current_user.guest_user? %>
+  <div class="row">
+    <div class="col mt-2 pr-0 pl-3">
+      <%= form_with model: [post, comment], local: false do |f| %>
+        <div class="row">
+          <div class="col d-flex justify-content-end">
+            <%= f.text_area :comment, rows: '3', placeholder: "コメントを入力してください", class: "w-100" %>
+          </div>
+        </div>
+        <div class="row mt-2">
+          <div class="col d-flex justify-content-between">
+            <div id="comment_count">
+              <%= render 'public/comments/count', post: post %>
+            </div>
+            <%= f.submit "送信する", class: "bnt btn-sm btn-success" %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+<% end %>

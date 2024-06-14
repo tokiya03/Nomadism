@@ -3,7 +3,7 @@ class Admin::HomesController < ApplicationController
 
   def top
     @admin = Admin.find(1)
-    @users = User.all
-    @posts = Post.all
+    @users = User.all.order(id: 'desc')
+    @posts = Post.all.order(id: 'desc')
   end
 end
