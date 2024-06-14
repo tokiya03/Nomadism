@@ -48,17 +48,17 @@
           <!-- コメントのための記述 -->
           <% @post.comments.each do |comment| %>
             <div class="row">
-              <div class="col border py-2 mt-2">
+              <div class="col border py-2 mt-2 comment">
                 <div class="row d-flex justify-content-between">
                   <div class="col">
-                    <%= comment.id %>: #<%= comment.user.name %>
+                    <%= comment.id %>: <%= link_to "##{comment.user.name}", admin_user_path(comment.user.id), class: "text-decoration-none text-dark" %>
                   </div>
                   <div class="col text-right">
                     <%= comment.created_at.strftime('%Y/%-m/%-d' + ' ' + '%-H:%-M' + ' ' + '%p') %>
                   </div>
                 </div>
                 <div class="row">
-                  <div class="col mt-2">
+                  <div class="col mt-1">
                     <!-- コメントの内容を表示 -->
                     <%= comment.comment %>
                   </div>
