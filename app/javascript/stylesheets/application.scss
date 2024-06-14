@@ -23,6 +23,19 @@
   margin-bottom: 0;
 }
 
+.top_new_posts {
+  margin: 0 1rem 1rem 0;
+}
+
+.top_new_posts:nth-child(even) {
+  margin-right: 0;
+}
+
+.top_new_posts:nth-child(3),
+.top_new_posts:nth-child(4) {
+  margin-bottom: 0 ;
+}
+
 .new_users {
   padding: 0;
   margin-bottom: 0.25rem;
@@ -33,11 +46,20 @@
   margin: 0 0.4rem 0.3rem 0;
 }
 
+.new_users:nth-child(even),
+.new_posts:nth-child(even) {
+  margin-right: 0;
+}
+
 .new_users:nth-child(3),
 .new_users:nth-child(4),
 .new_posts:nth-child(3),
 .new_posts:nth-child(4) {
   margin-bottom: 0;
+}
+
+.comment {
+   font-size: 0.875rem;
 }
 
 .pagination{
