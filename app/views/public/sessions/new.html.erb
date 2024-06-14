@@ -39,6 +39,9 @@
               <%= f.submit 'ログイン', class: "btn-lg btn-block btn-info my-2" %>
             <% end %>
 
+            <!-- 管理者ログイン画面へのリンクボタン -->
+            <%= link_to '管理者ログイン', new_admin_session_path, class: "btn-lg btn-block btn-success mb-2 text-decoration-none" %>
+
             <!-- ゲストユーザーとしてログインするためのボタン -->
             <%= link_to 'ゲストログイン ( 閲覧用 )', users_guest_sign_in_path, method: :post, class: "btn-lg btn-block btn-secondary mb-2 text-decoration-none" %>
 
