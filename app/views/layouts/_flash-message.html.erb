@@ -1,7 +1,9 @@
-<% flash.each do |message_type, message| %>
-  <% if message_type == 'alert' %>
-    <div class="flash-message <%= message_type %> w-100 py-2 text-center bg-danger text-white"><%= message %></div>
-  <% else %>
-    <div class="flash-message <%= message_type %> w-100 py-2 text-center bg-<%= message_type %> text-white"><%= message %></div>
+<div id="flash-message">
+  <% flash.each do |message_type, message| %>
+    <% if message_type == 'alert' %>
+      <div class="flash-message <%= message_type %> w-100 py-2 text-center bg-danger text-white"><%= message %></div>
+    <% else %>
+      <div class="flash-message <%= message_type %> w-100 py-2 text-center bg-<%= message_type %> text-white"><%= message %></div>
+    <% end %>
   <% end %>
-<% end %>
+</div>

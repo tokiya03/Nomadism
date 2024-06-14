@@ -9,7 +9,9 @@
         </div>
         <div class="row mt-2">
           <div class="col d-flex justify-content-between">
-            コメント数：<%= post.comments.count %>
+            <div id="comment_count">
+              <%= render 'public/comments/count', post: post %>
+            </div>
             <%= f.submit "送信する", class: "bnt btn-sm btn-success" %>
           </div>
         </div>

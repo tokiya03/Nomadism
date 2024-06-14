@@ -25,15 +25,16 @@
             </div>
 
             <div class="field mb-4">
-              <%= f.label :住所 %><br />    <%= f.text_field :address, class: "form-control" %>
+              <%= f.label :住所 %><br />
+              <%= f.text_field :address, class: "form-control" %>
             </div>
 
             <div class="field">
-              <%= f.submit '更新する', class: "btn btn-sm btn-success form-control" %>
+              <%= f.submit '更新する', class: "btn btn-sm btn-success form-control mb-4" %>
             </div>
           <% end %>
 
-          <%= link_to '削除する', post_path(@post.id), method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn btn-md btn-danger form-control" %>
+          <%= link_to '削除する', post_path(@post.id), method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn btn-sm btn-danger form-control" %>
         </div>
       </div>
     </div>
