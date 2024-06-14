@@ -41,7 +41,7 @@
             <div class="col">
               <h6>▼新規登録ユーザー</h6>
               <div class="row">
-                <% @users.last(4).each do |user| %>
+                <% @users.first(4).each do |user| %>
                   <%= link_to admin_user_path(user.id), class: "col-5 text-dark text-decoration-none new_users" do %>
                     <div class="col border py-2 d-flex">
                         <div class="d-flex align-items-center">
@@ -62,7 +62,7 @@
             <div class="col">
               <h6>▼最新の投稿</h6>
               <div class="row">
-                <% @posts.last(4).each do |post| %>
+                <% @posts.first(4).each do |post| %>
                   <%= link_to admin_post_path(post.id), class: "col-5 px-0 text-dark text-decoration-none new_posts" do %>
                     <div class="col border py-2 d-flex">
                       スポット名：<%= post.name %><br />

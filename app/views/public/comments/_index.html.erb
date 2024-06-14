@@ -1,0 +1,25 @@
+<% post.comments.each do |comment| %>
+  <div class="row">
+    <div class="col border py-2 mt-2 comment">
+      <div class="row d-flex justify-content-between">
+        <div class="col">
+          <%= comment.id %>: <%= link_to "@#{comment.user.name}", user_path(comment.user.id), class: "text-decoration-none text-dark" %>
+        </div>
+        <div class="col text-right">
+          <%= comment.created_at.strftime('%Y/%-m/%-d' + ' ' + '%-H:%-M' + ' ' + '%p') %>
+        </div>
+      </div>
+      <div class="row">
+        <!-- コメントの内容を表示 -->
+        <div class="col mt-1"><%= comment.comment %></div>
+      </div>
+      <% if comment.user == current_user %>
+        <div class="row">
+          <div class="col d-flex justify-content-end">
+            <%= link_to "削除", post_comment_path(comment.post, comment), method: :delete, "data-confirm" => "コメントを削除しますか？", class: "btn btn-sm btn-danger", remote: true %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+<% end %>

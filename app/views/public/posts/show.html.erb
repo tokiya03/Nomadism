@@ -46,54 +46,11 @@
             </div>
           <% end %>
 
-          <!-- コメントのための記述 -->
-          <% @post.comments.each do |comment| %>
-            <div class="row">
-              <div class="col border py-2 mt-2 comment">
-                <div class="row d-flex justify-content-between">
-                  <div class="col">
-                    <%= comment.id %>: <%= link_to "##{comment.user.name}", user_path(comment.user.id), class: "text-decoration-none text-dark" %>
-                  </div>
-                  <div class="col text-right">
-                    <%= comment.created_at.strftime('%Y/%-m/%-d' + ' ' + '%-H:%-M' + ' ' + '%p') %>
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="col mt-1">
-                    <!-- コメントの内容を表示 -->
-                    <%= comment.comment %>
-                  </div>
-                </div>
-                <% if comment.user == current_user %>
-                  <div class="row">
-                    <div class="col d-flex justify-content-end">
-                      <%= link_to "削除", post_comment_path(comment.post, comment), method: :delete, "data-confirm" => "コメントを削除しますか？", class: "btn btn-sm btn-danger" %>
-                    </div>
-                  </div>
-                <% end %>
-              </div>
-            </div>
-          <% end %>
-
-          <% unless current_user.guest_user? %>
-            <div class="row">
-              <div class="col mt-2 pr-0 pl-3">
-                <%= form_with model: [@post, @comment] do |f| %>
-                  <div class="row">
-                    <div class="col d-flex justify-content-end">
-                      <%= f.text_area :comment, rows: '3', placeholder: "コメントを入力してください", class: "w-100" %>
-                    </div>
-                  </div>
-                  <div class="row mt-2">
-                    <div class="col d-flex justify-content-between">
-                      コメント数：<%= @post.comments.count %>
-                      <%= f.submit "送信する", class: "bnt btn-sm btn-success" %>
-                    </div>
-                  </div>
-                <% end %>
-              </div>
-            </div>
-          <% end %>
+          <!-- 投稿に対するコメント -->
+          <div id="comment_index">
+            <%= render 'public/comments/index', post: @post, comment: @comment %>
+          </div>
+          <%= render 'public/comments/form', post: @post, comment: @comment %>
         </div>
       </div>
     </div>

@@ -3,16 +3,16 @@ class Public::CommentsController < ApplicationController
   before_action :check_guest_user, only: [:create]
 
   def create
-    post = Post.find(params[:post_id])
-    comment = current_user.comments.new(comment_params)
-    comment.post_id = post.id
-    comment.save
-    redirect_to post_path(post.id)
+    @post = Post.find(params[:post_id])
+    @comment = current_user.comments.new(comment_params)
+    @comment.post_id = @post.id
+    @comment.save
   end
 
   def destroy
-    Comment.find(params[:id]).destroy
-    redirect_to post_path(params[:post_id])
+    @post = Post.find(params[:post_id])
+    @comment = Comment.find(params[:id])
+    @comment.destroy
   end
 
   # ストロングパラメータ
