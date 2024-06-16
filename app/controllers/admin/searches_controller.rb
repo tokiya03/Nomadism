@@ -3,7 +3,7 @@ class Admin::SearchesController < ApplicationController
 
   def search
     @search_query = params[:word]  # 検索キーワードを受け取る
-    if @search_query.start_with?('@')  # 検索キーワードの先頭が＠から始まるかどうかをチェック
+    if @search_query.start_with?('@') || @search_query.start_with?('＠')  # 検索キーワードの先頭が＠から始まるかどうかをチェック
       @users = User.where("name LIKE ?", "#{@search_query[1..-1]}%")  # 前方一致でユーザーを検索
       @no_results = @users.empty?  # ユーザーの検索結果が空かどうかを判定
       render :users_search_results
