@@ -4,6 +4,10 @@ class Admin::CommentsController < ApplicationController
   def destroy
     @post = Post.find(params[:post_id])
     @comment = Comment.find(params[:id])
-    @comment.destroy
+    if @comment.destroy
+      flash.now[:success] = 'コメントを削除しました。'
+    else
+      flash.now[:danger] = 'コメントの削除に失敗しました。'
+    end
   end
 end
