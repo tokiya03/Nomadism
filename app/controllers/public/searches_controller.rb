@@ -9,7 +9,7 @@ class Public::SearchesController < ApplicationController
         render :users_search_results
       else
         users = User.where("name LIKE ?", "#{@search_query[1..-1]}%")  # 前方一致でユーザーを検索
-        @no_results = users.empty?  # ユーザーの検索結果が空かどうかを判定
+        @no_results = users.blank?  # ユーザーの検索結果が空かどうかを判定
         @users = users.page(params[:page])
         render :users_search_results
       end
@@ -18,8 +18,13 @@ class Public::SearchesController < ApplicationController
         "name LIKE ? OR caption LIKE ? OR address LIKE ?",            # 部分一致で投稿(場所名/説明(感想)/住所)を検索
         "%#{@search_query}%", "%#{@search_query}%", "%#{@search_query}%"
       )
-      @no_results = @posts.empty?  # 投稿の検索結果が空かどうかを判定
-      render :posts_search_results
+      if @no_results = @search_query.blank?  # 空欄のまま検索した時
+        flash[:info] = '検索内容を入力してください。'
+        render :posts_search_results
+      else
+        @no_results = @posts.blank?  # 投稿の検索結果が空かどうかを判定
+        render :posts_search_results
+      end
     end
   end
 end
