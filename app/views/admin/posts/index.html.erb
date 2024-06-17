@@ -9,7 +9,7 @@
 
       <div class="row mt-2">
         <div class="col-7 border">
-          <div>GoogleMap</div>
+          <div id="map"></div>
         </div>
 
         <div class="col ml-2 overflow-auto" style="height: 600px;">
@@ -46,3 +46,5 @@
     </div>
   </div>
 </div>
+
+<%= javascript_pack_tag 'map', 'data-turbolinks-track': 'reload' %>

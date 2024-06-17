@@ -1,9 +1,9 @@
 function jpostal() {
   $('#zipcode').jpostal({
     postcode : ['#zipcode'],
-    addres : {
+    address : {
       '#post_address': '%3%4%5'
     }
   });
 }
-$(document).on("turbolinks:load".jpostal);
+$(document).on("turbolinks:load", jpostal);
