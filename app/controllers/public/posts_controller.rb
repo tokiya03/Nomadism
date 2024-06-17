@@ -36,7 +36,6 @@ class Public::PostsController < ApplicationController
     end
   end
 
-
   def update
     @post = Post.find(params[:id])
     if @post.update(post_parms)
@@ -48,7 +47,6 @@ class Public::PostsController < ApplicationController
     end
 
   end
-
 
   def destroy
     @post = Post.find(params[:id])

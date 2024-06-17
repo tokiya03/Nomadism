@@ -15,13 +15,18 @@
             <%= f.hidden_field :user_id, value: current_user.id %>
 
             <div class="field mb-3">
-              <%= f.label :店名 %><br />
+              <%= f.label :スポット名 %><br />
               <%= f.text_field :name, autofocus: true, class: "form-control" %>
             </div>
 
             <div class="field mb-3">
-              <%= f.label '説明' %><br />
+              <%= f.label :説明 %><br />
               <%= f.text_area :caption, class: "form-control" %>
+            </div>
+
+            <div class="field mb-3">
+              <%= f.label :郵便番号 %><br />
+              <%= text_field_tag :zipcode, class: "form-control" %>
             </div>
 
             <div class="field mb-4">
@@ -41,3 +46,4 @@
   </div>
 </div>
 
+<%= javascript_pack_tag "jpostal",  'data-turbolinks-track': 'reload' %>
