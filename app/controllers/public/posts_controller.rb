@@ -21,11 +21,18 @@ class Public::PostsController < ApplicationController
   def index
     @user = current_user
     @posts = Post.all.order(id: 'desc')
+    @posts_json = @posts.with_user_name
+
+    respond_to do |format|
+      format.html
+      format.json { render json: @posts.with_user_name }
+    end
   end
 
   def show
     @post = Post.find(params[:id])
     @comment = Comment.new
+    @posts_json = Post.where(id: @post.id).with_user_name
   end
 
   def edit
@@ -35,7 +42,6 @@ class Public::PostsController < ApplicationController
       redirect_to posts_path
     end
   end
-
 
   def update
     @post = Post.find(params[:id])
@@ -48,7 +54,6 @@ class Public::PostsController < ApplicationController
     end
 
   end
-
 
   def destroy
     @post = Post.find(params[:id])
@@ -66,7 +71,7 @@ class Public::PostsController < ApplicationController
   # ストロングパラメータ
   private
   def post_parms
-    params.require(:post).permit(:name, :caption, :address)
+    params.require(:post).permit(:name, :caption, :address, :user_id)
   end
 
   def check_guest_user

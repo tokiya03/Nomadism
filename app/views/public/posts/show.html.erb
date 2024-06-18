@@ -1,3 +1,4 @@
+<div id="postsData" data-json='<%== @posts_json.to_json %>'></div>
 <div class="container">
   <div class="row my-4">
     <div class="col">
@@ -9,7 +10,7 @@
 
       <div class="row justify-content-between mt-2">
         <div class="col-6 border" style="height: 500px;">
-          GoogleMapの地図
+          <div id="map"></div>
         </div>
 
         <div class="col-5">
@@ -56,3 +57,5 @@
     </div>
   </div>
 </div>
+
+<%= javascript_pack_tag 'map', 'data-turbolinks-track': 'reload' %>

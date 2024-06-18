@@ -12,13 +12,18 @@
         <div class="col-6 mx-auto">
           <%= form_with model: @post, url: posts_path, method: :post, local: true do |f| %>
             <div class="field mb-3">
-              <%= f.label :店名 %><br />
+              <%= f.label :スポット名 %><br />
               <%= f.text_field :name, autofocus: true, class: "form-control" %>
             </div>
 
             <div class="field mb-3">
-              <%= f.label '説明' %><br />
+              <%= f.label :説明 %><br />
               <%= f.text_area :caption, class: "form-control" %>
+            </div>
+
+            <div class="field mb-3">
+              <%= f.label :郵便番号 %><br />
+              <%= text_field_tag :zipcode, nil, class: "form-control" %>
             </div>
 
             <div class="field mb-4">
@@ -36,3 +41,4 @@
   </div>
 </div>
 
+<%= javascript_pack_tag "jpostal",  'data-turbolinks-track': 'reload' %>

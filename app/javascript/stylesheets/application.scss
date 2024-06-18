@@ -71,3 +71,8 @@
 .pagination a, span {
   padding: 0 3px;
 }
+
+#map {
+  width: 100%;
+  height: calc(100vh - 88px - 179px);
+}

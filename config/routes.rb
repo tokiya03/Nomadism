@@ -24,7 +24,7 @@ Rails.application.routes.draw do
     end
 
     get 'search' => 'searches#search'
-
+    resource :map, only: [:show]
   end
 
 
@@ -43,6 +43,7 @@ Rails.application.routes.draw do
     end
 
     get 'search' => 'searches#search'
+    resource :map, only: [:show]
   end
 
 
