@@ -19,12 +19,25 @@ class Admin::SearchesController < ApplicationController
         "%#{@search_query}%", "%#{@search_query}%", "%#{@search_query}%"
       )
       if @no_results = @search_query.blank?  # 空欄のまま検索した時
-        flash.now[:info] = '検索内容を入力してください。'
+        flash.now[:info] = '検索する投稿のキーワードを入力してください。'
         render :posts_search_results
       else
         @no_results = @posts.blank?  # 投稿の検索結果が空かどうかを判定
         render :posts_search_results
       end
+    end
+  end
+
+  def search_comment
+    @search_query = params[:word]  # 検索キーワードを受け取る
+    if @no_results = @search_query.blank?  # 空欄のまま検索した時
+      flash.now[:info] = '検索するコメントのキーワードを入力してください。'
+      render :comments_search_results
+    else
+      comments = Comment.where("comment LIKE ?", "%#{@search_query}%")  # 部分一致でコメントを検索
+      @no_results = comments.blank?  # コメントの検索結果が空かどうかを判定
+      @comments = comments.page(params[:page])
+      render :comments_search_results
     end
   end
 end

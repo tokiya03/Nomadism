@@ -1,4 +1,5 @@
 <div id="postsData" data-json='<%== @posts_json.to_json %>'></div>
+
 <div class="container">
   <div class="row my-4">
     <div class="col">
@@ -48,8 +49,8 @@
           <% end %>
 
           <!-- 投稿に対するコメント -->
-          <div id="comment_index">
-            <%= render 'public/comments/index', post: @post, comment: @comment %>
+          <div id="comment_list">
+            <%= render 'public/comments/list', post: @post, comment: @comment %>
           </div>
           <%= render 'public/comments/form', post: @post, comment: @comment %>
         </div>

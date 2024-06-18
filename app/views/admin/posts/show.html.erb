@@ -1,3 +1,5 @@
+<div id="adminPostsData" data-json='<%== @posts_json.to_json %>'></div>
+
 <div class="container">
   <div class="row my-4">
     <div class="col">
@@ -9,7 +11,7 @@
 
       <div class="row justify-content-between mt-2">
         <div class="col-5 border" style="height: 500px;">
-          <div id="map"></div>
+          <div id="admin-map"></div>
         </div>
 
         <div class="col-6">
@@ -46,8 +48,8 @@
           </div>
 
           <!-- 投稿に対するコメント -->
-          <div id="comment_index">
-            <%= render 'admin/comments/index', post: @post %>
+          <div id="comment_list">
+            <%= render 'admin/comments/list', post: @post %>
           </div>
         </div>
       </div>
@@ -55,4 +57,4 @@
   </div>
 </div>
 
-<%= javascript_pack_tag 'map', 'data-turbolinks-track': 'reload' %>
+<%= javascript_pack_tag 'admin_map', 'data-turbolinks-track': 'reload' %>

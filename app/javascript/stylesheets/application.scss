@@ -51,6 +51,11 @@
   margin-right: 0;
 }
 
+.search_comment_form {
+  width: 100%;
+  justify-content: end;
+}
+
 .new_users:nth-child(3),
 .new_users:nth-child(4),
 .new_posts:nth-child(3),
@@ -73,6 +78,11 @@
 }
 
 #map {
+  width: 100%;
+  height: calc(100vh - 88px - 179px);
+}
+
+#admin-map {
   width: 100%;
   height: calc(100vh - 88px - 179px);
 }

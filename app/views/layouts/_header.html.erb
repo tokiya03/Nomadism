@@ -5,6 +5,9 @@
       <%= image_tag 'logo.jpg', size: "40x40" %>Nomadism
     <% end %>
 
+    <!-- 検索窓を表示 -->
+    <%= render 'layouts/search' %>
+
     <%= button_tag(type: "button", class: "navbar-toggler", data: {toggle: "collapse", target: "#navbarNavDropdown", controls: "navbarNavDropdown", expanded: "false", label: "Toggle navigation"}) do %>
       <%= content_tag(:span, '', class: "navbar-toggler-icon") %>
     <% end %>
@@ -34,6 +37,11 @@
           <li class="nav-item">
             <%= link_to admin_posts_path, class: "nav-link text-dark btn" do %>
               <i class="fa-solid fa-satellite"></i> 投稿一覧
+            <% end %>
+          </li>
+          <li class="nav-item">
+            <%= link_to admin_comments_path, class: "nav-link text-dark btn" do %>
+              <i class="fa-solid fa-comments"></i> コメント一覧
             <% end %>
           </li>
           <!-- フェーズ3で実装するため一時的にコメントアウト-->
@@ -79,9 +87,5 @@
         <% end %>
       </ul>
     </div>
-
-    <!-- 検索窓を表示 -->
-    <%= render 'layouts/search' %>
-
   </div>
 </nav>

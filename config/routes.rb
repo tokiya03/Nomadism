@@ -41,8 +41,10 @@ Rails.application.routes.draw do
     resources :posts, only: [:index, :show, :destroy] do
       resources :comments, only: [:destroy]
     end
+    resources :comments, only: [:index, :destroy]
 
     get 'search' => 'searches#search'
+    get 'search_comment' => 'searches#search_comment'
     resource :map, only: [:show]
   end
 
