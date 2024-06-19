@@ -49,7 +49,7 @@ class Admin::SearchesController < ApplicationController
     else
       groups = Group.where("name LIKE ?", "%#{@search_query}%")           # 部分一致でグループを検索
       @no_results = groups.blank?                                         # グループの検索結果が空かどうかを判定
-      @groups = Groups.page(params[:page])
+      @groups = groups.page(params[:page])
       render :groups_search_results
     end
   end

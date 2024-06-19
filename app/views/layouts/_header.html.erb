@@ -19,6 +19,7 @@
           <li class="nav-item">
             <%= link_to about_path, class: "nav-link text-dark btn" do %>
               <i class="fa-solid fa-diagram-project"></i> About
+              <p class="mb-0 text-center" style="font-size: 10px;">アバウト</p>
             <% end %>
           </li>
         <% end %>
@@ -27,60 +28,70 @@
         <% if admin_signed_in? %>
           <li class="nav-item">
             <%= link_to admin_root_path, class: "nav-link text-dark btn" do %>
-              <i class="fa-solid fa-user"></i> マイページ
+              <i class="fa-solid fa-user"></i> MyPage
+              <p class="mb-0 text-center" style="font-size: 10px;">マイページ</p>
             <% end %>
           </li>
           <li class="nav-item">
             <%= link_to admin_users_path, class: "nav-link text-dark btn" do %>
-              <i class="fa-solid fa-users"></i> ユーザー一覧
+              <i class="fa-solid fa-users"></i> Users
+              <p class="mb-0 text-center" style="font-size: 10px;">ユーザー一覧</p>
             <% end %>
           <li class="nav-item">
             <%= link_to admin_posts_path, class: "nav-link text-dark btn" do %>
-              <i class="fa-solid fa-satellite"></i> 投稿一覧
+              <i class="fa-solid fa-satellite"></i> Posts
+              <p class="mb-0 text-center" style="font-size: 10px;">投稿一覧</p>
             <% end %>
           </li>
           <li class="nav-item">
             <%= link_to admin_comments_path, class: "nav-link text-dark btn" do %>
-              <i class="fa-solid fa-comments"></i> コメント一覧
+              <i class="fa-solid fa-comments"></i> Comments
+              <p class="mb-0 text-center" style="font-size: 10px;">コメント一覧</p>
             <% end %>
           </li>
-          <!-- フェーズ3で実装するため一時的にコメントアウト-->
-          <!--<li class="nav-item">-->
-          <!--  <%#= link_to admin_groups_path, class: "nav-link text-dark btn" do %>-->
-          <!--    <i class="fa-solid fa-people-group"></i> グループ一覧-->
-          <!--  <%# end %>-->
-          <!--</li>-->
+          <li class="nav-item">
+            <%= link_to admin_groups_path, class: "nav-link text-dark btn" do %>
+              <i class="fa-solid fa-people-group"></i> Groups
+              <p class="mb-0 text-center" style="font-size: 10px;">グループ一覧</p>
+            <% end %>
+          </li>
           <li class="nav-item">
             <%= link_to destroy_admin_session_path, method: :delete, class: "nav-link text-dark btn" do %>
-              <i class="fa-solid fa-arrow-right-from-bracket"></i> ログアウト
+              <i class="fa-solid fa-arrow-right-from-bracket"></i> Logout
+              <p class="mb-0 text-center" style="font-size: 10px;">ログアウト</p>
             <% end %>
           </li>
         <!-- 会員ログインの場合の表示 -->
         <% elsif user_signed_in? %>
           <li class="nav-item">
             <%= link_to mypage_path, class: "nav-link text-dark btn" do %>
-              <i class="fa-solid fa-user"></i> マイページ
+              <i class="fa-solid fa-user"></i> MyPage
+              <p class="mb-0 text-center" style="font-size: 10px;">マイページ</p>
             <% end %>
           </li>
           <li class="nav-item">
             <%= link_to posts_path, class: "nav-link text-dark btn" do %>
-              <i class="fa-solid fa-satellite"></i> 投稿一覧
+              <i class="fa-solid fa-satellite"></i> Posts
+              <p class="mb-0 text-center" style="font-size: 10px;">投稿一覧</p>
             <% end %>
           </li>
           <li class="nav-item">
             <%= link_to groups_path, class: "nav-link text-dark btn" do %>
-              <i class="fa-solid fa-people-group"></i> グループ一覧
+              <i class="fa-solid fa-people-group"></i> Groups
+              <p class="mb-0 text-center" style="font-size: 10px;">グループ一覧</p>
             <% end %>
           </li>
           <li class="nav-item">
             <%= link_to destroy_user_session_path, method: :delete, class: "nav-link text-dark btn" do %>
-              <i class="fa-solid fa-arrow-right-from-bracket"></i> ログアウト
+              <i class="fa-solid fa-arrow-right-from-bracket"></i> Logout
+              <p class="mb-0 text-center" style="font-size: 10px;">ログアウト</p>
             <% end %>
           </li>
         <% else %>
           <li class="nav-item">
             <%= link_to new_user_session_path, class: "nav-link text-dark btn" do %>
-              <i class="fa-solid fa-arrow-right-to-bracket"></i> ログイン
+              <i class="fa-solid fa-arrow-right-to-bracket"></i> Login
+              <p class="mb-0 text-center" style="font-size: 10px;">ログイン</p>
             <% end %>
           </li>
         <% end %>

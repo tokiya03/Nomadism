@@ -48,7 +48,7 @@ Rails.application.routes.draw do
       resources :comments, only: [:destroy]
     end
     resources :comments, only: [:index, :destroy]
-    resources :groups, only: [:index, :show, :delete]
+    resources :groups, only: [:index, :show, :destroy]
 
     get 'search' => 'searches#search'
     get 'search_comment' => 'searches#search_comment'
