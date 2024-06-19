@@ -23,6 +23,8 @@ Rails.application.routes.draw do
       resources :comments, only: [:create, :destroy]
     end
 
+    resources :groups, only: [:new, :index, :show, :edit, :update, :delete]
+
     get 'search' => 'searches#search'
     resource :map, only: [:show]
   end
@@ -43,22 +45,12 @@ Rails.application.routes.draw do
     end
     resources :comments, only: [:index, :destroy]
 
+    resources :groups, only: [:index, :show, :delete]
+
     get 'search' => 'searches#search'
     get 'search_comment' => 'searches#search_comment'
     resource :map, only: [:show]
   end
-
-
-  # namespace :public do
-  #   get 'groups/new'
-  #   get 'groups/show'
-  #   get 'groups/edit'
-  #   get 'groups/index'
-  # end
-  # namespace :admin do
-  #   get 'groups/index'
-  #   get 'groups/show'
-  # end
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
