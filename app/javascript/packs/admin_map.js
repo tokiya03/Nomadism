@@ -53,11 +53,11 @@ async function initMap() {
       });
 
       const contentString = `
-        <div class="information container p-0">
-          <p class="lead m-0 font-weight-bold">${userName}</p>
-          <h1 class="h4 font-weight-bold">${spotName}</h1>
-          <p class="text-muted">${address}</p>
-          <p class="lead">${caption}</p>
+        <div class="information container p-0" style="max-width: 300px;">
+          <p class="text-muted"><i class="fa-solid fa-user"></i> ${userName}</p>
+          <p class="text-muted"><i class="fa-solid fa-shop"></i> ${spotName}</p>
+          <p class="text-muted"><i class="fa-solid fa-location-dot"></i> ${address}</p>
+          <p class="text-muted"><i class="fa-solid fa-microphone-lines"></i> ${caption}</p>
         </div>
       `;
 

@@ -2,19 +2,19 @@
   <div class="row my-4">
     <div class="col">
       <div class="row">
-        <div class="col">
+        <div class="col-5">
           <h3>グループ一覧</h3>
         </div>
-        <div class="col">
-          <div class="search_form">
+        <div class="col-4">
+          <div class="search_form search_group_form">
             <%= form_with url: search_group_path, method: :get, local: true do |f| %>
-              <%= f.text_field :word, placeholder: ' 検索ワードを入力' %>
+              <%= f.text_field :word, placeholder: ' 検索するグループ名を入力', class: "w-75" %>
               <%= f.submit '検索', class: "btn btn-sm btn-outline-primary" %>
             <% end %>
           </div>
         </div>
         <% unless @user.guest_user? %>
-          <div class="col text-right">
+          <div class="col-3 text-right">
             <%= link_to '新しいグループを作成する', new_group_path, class: "btn btn-info" %>
           </div>
         <% end %>

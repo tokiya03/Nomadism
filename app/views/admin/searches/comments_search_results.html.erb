@@ -43,11 +43,10 @@
               </div>
             <% end %>
           </div>
+          <!-- ページネーションの記述 -->
+          <%= paginate @comments %>
         </div>
       <% end %>
-
-      <!-- ページネーションの記述 -->
-      <%#= paginate @comments %>
     </div>
   </div>
 </div>
