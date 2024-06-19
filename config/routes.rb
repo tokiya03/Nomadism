@@ -23,7 +23,10 @@ Rails.application.routes.draw do
       resources :comments, only: [:create, :destroy]
     end
 
-    resources :groups, only: [:new, :index, :show, :edit, :update, :delete]
+    resources :groups, only: [:new, :create, :index, :show, :edit, :update, :destroy] do
+      resource :user_groups, only: [:create, :destroy]
+      get "join" => "groups#join"
+    end
 
     get 'search' => 'searches#search'
     resource :map, only: [:show]

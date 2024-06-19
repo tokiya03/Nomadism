@@ -23,5 +23,3 @@ class Post < ApplicationRecord
     email == GUEST_USER_EMAIL
   end
 end
-#[:id, :user_id, :name, :caption, :address, :created_at, :updated_at, :latitude, :longitude]
-#[:id, :created_at, :updated_at, :email, :encrypted_password, :reset_password_token, :reset_password_sent_at, :remember_created_at, :name, :is_active]
