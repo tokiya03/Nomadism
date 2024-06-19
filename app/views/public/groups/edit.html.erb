@@ -1,0 +1,41 @@
+<div class="container">
+  <div class="row my-4">
+    <div class="col">
+      <div class="row">
+        <div class="col offset-1">
+          <h3>グループ編集フォーム</h3>
+          <%= render 'layouts/error', obj: @group %>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-6 mx-auto">
+          <%= form_with model: @group, url: group_path(@group.id), method: :patch, local: true do |f| %>
+            <div class="field mb-3">
+              <%= f.label :グループ名 %><br />
+              <%= f.text_field :name, autofocus: true, class: "form-control" %>
+            </div>
+
+            <div class="field mb-3">
+              <%= f.label :紹介文 %><br />
+              <%= f.text_area :introduction, class: "form-control" %>
+            </div>
+
+            <div class="field mb-4">
+              <%= f.label :グループ画像 %><br />
+              <%= f.file_field :group_image %>
+            </div>
+
+            <div class="field mb-4">
+              <%= f.submit '更新する', class: "btn btn-sm btn-success form-control" %>
+            </div>
+          <% end %>
+
+          <div class="field">
+              <%= link_to '削除する', group_path(@group.id), method: :delete, "data-confirm" => "本当にグループを削除しますか？", class: "btn btn-sm btn-danger form-control" %>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -3,10 +3,15 @@ class Admin::PostsController < ApplicationController
 
   def index
     @posts = Post.all.order(id: 'desc')
+    respond_to do |format|
+      format.html
+      format.json { render json: @posts.with_user_name }
+    end
   end
 
   def show
     @post = Post.find(params[:id])
+    @posts_json = Post.where(id: @post.id).with_user_name
   end
 
   def destroy

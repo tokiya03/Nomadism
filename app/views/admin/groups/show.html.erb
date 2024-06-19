@@ -1,0 +1,57 @@
+<div class="container">
+  <div class="row my-4">
+    <div class="col">
+      <div class="row">
+        <div class="col">
+          <h3>グループ詳細（管理者）</h3>
+        </div>
+      </div>
+
+      <div class="row mt-3">
+        <div class="col">
+          <div class="row">
+            <div class="col">
+              <%= image_tag @group.get_group_image(472, 330) %>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col mt-4">
+              <b>グループ名：</b><br />　<%= @group.name %>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col mt-3">
+              <b>紹介文：</b><br />　<%= @group.introduction %>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="row">
+            <h5 class="col pb-2 fw-bold">◆グループメンバー</h5>
+          </div>
+          <div class="row border-top border-bottom py-2">
+            <div class="col-2"></div>
+            <div class="col"><b>ユーザー名</b></div>
+            <div class="col-2"><b>投稿数</b></div>
+          </div>
+          <% @group.users.each do |user| %>
+            <div class="row border-bottom py-2">
+              <div class="col-2"><%= image_tag user.get_profile_image(50, 50), class: "rounded-circle d-block mx-auto" %></div>
+              <div class="col">
+                <%= link_to admin_user_path(user.id) do %>
+                  <%= user.name %>
+                <% end %>
+              </div>
+              <div class="col-2"><%= user.posts.count %></div>
+            </div>
+          <% end %>
+          <div class="row">
+            <div class="col d-flex justify-content-end mt-3">
+              <%= link_to 'グループを削除する', admin_group_path(@group.id), method: :delete, "data-confirm" => "本当にグループを削除しますか？", class: "btn btn-sm btn-danger" %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -5,30 +5,37 @@
 
 // ライブラリの読み込み
 let map;
-const postsData = $('#postsData')
+const postsData = $('#adminPostsData')
+// console.log(postsData)
 const posts = postsData.data('json')
 let default_latitude = 35.681236
 let default_longitude = 139.767125
-if (posts.length >= 1) {
-  const index = posts.length - 1
-  const default_post = posts[index]
-  default_latitude = default_post.latitude
-  default_longitude = default_post.longitude
-}
+// if (posts.length >= 1) {
+//   const index = posts.length - 1
+//   const default_post = posts[index]
+//   default_latitude = default_post.latitude
+//   default_longitude = default_post.longitude
+// }
 
 async function initMap() {
   const { Map } = await google.maps.importLibrary("maps");
   const {AdvancedMarkerElement} = await google.maps.importLibrary("marker")
 
   // 地図の中心と倍率は公式から変更
-  map = new Map(document.getElementById("map"), {
-    center: { lat: default_latitude, lng: default_longitude },
+  map = new Map(document.getElementById("admin-map"), {
+    center: { lat: 35.681236, lng: 139.767125 },
     zoom: 15,
     mapId: "DEMO_MAP_ID",
     mapTypeControl: false
   });
 
   try {
+    const response = await fetch("/admin/posts.json");
+    if (!response.ok) throw new Error('Network response was not ok');
+
+    const posts = await response.json();
+    if (!Array.isArray(posts)) throw new Error("Posts is not an array");
+
     posts.forEach( post => {
       // 投稿に関する設定
       const latitude = post.latitude;
@@ -38,6 +45,7 @@ async function initMap() {
       const userName = post.user_name;
       const address = post.address;
       const caption = post.caption;
+
       const marker = new google.maps.marker.AdvancedMarkerElement ({
         position: { lat: latitude, lng: longitude },
         map,
@@ -55,14 +63,18 @@ async function initMap() {
 
       const infowindow = new google.maps.InfoWindow({
         content: contentString,
+        ariaLabel: spotName,
       });
 
       marker.addListener("click", () => {
-          infowindow.open(map, marker);
+          infowindow.open({
+          anchor: marker,
+          map,
+        })
       });
     });
   } catch (error) {
-  console.error('Error fetching or processing post:', error);
+    console.error('Error fetching or processing post:', error);
   }
 }
 

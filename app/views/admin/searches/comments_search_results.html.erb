@@ -1,0 +1,52 @@
+<div class="container">
+  <div class="row my-4">
+    <div class="col">
+      <div class="row d-flex justify-content-between">
+        <div class="col">
+          <h3>"<%= @search_query %>" を含むコメント一覧（管理者）</h3>
+        </div>
+        <div class="col d-flex justify-content-end">
+          <div class="search_form search_comment_form">
+            <%= form_with url: admin_search_comment_path, method: :get, local: true do |f| %>
+              <%= f.text_field :word, placeholder: ' コメントの検索ワードを入力',class: "w-75" %>
+              <%= f.submit '検索', class: "btn btn-sm btn-outline-primary" %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+
+      <% if @no_results %>
+        <div class="row mt-4">
+          <div class="col">
+            <p>該当するコメントはヒットしませんでした</p>
+          </div>
+        </div>
+      <% else %>
+        <div class="row mt-4">
+          <div class="col-11 mx-auto">
+            <div class="row border-top border-bottom">
+              <div class="col-2 py-3 fw-bold">投稿者</div>
+              <div class="col-7 py-3 fw-bold">コメントの内容</div>
+              <div class="col-2 py-3 fw-bold">投稿日時</div>
+              <div class="col py-3"></div>
+            </div>
+            <% @comments.each do |comment| %>
+              <div class="row border-bottom">
+                <div class="col-2 py-3">
+                  <%= image_tag comment.user.get_profile_image(30 , 30), class: "rounded-circle" %>　<%= comment.user.name %>
+                </div>
+                <div class="col-7 py-3"><%= comment.comment %></div>
+                <div class="col-2 py-3"><%= comment.created_at.strftime('%Y/%m/%d' + ' ' + '%H:%M') %></div>
+                <div class="col py-3">
+                  <%= link_to '削除', admin_comment_path(comment.id), remote: true, method: :delete, "data-confirm" => "本当にコメントを削除しますか？", class: "btn btn-sm btn-danger" %>
+                </div>
+              </div>
+            <% end %>
+          </div>
+          <!-- ページネーションの記述 -->
+          <%= paginate @comments %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

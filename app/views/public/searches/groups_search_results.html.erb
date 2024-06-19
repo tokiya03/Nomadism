@@ -1,0 +1,67 @@
+<div class="container">
+  <div class="row my-4">
+    <div class="col">
+      <div class="row">
+        <div class="col-5">
+          <h3>"<%= @search_query %>" を含むグループ一覧</h3>
+        </div>
+        <div class="col-4">
+          <div class="search_form search_group_form">
+            <%= form_with url: search_group_path, method: :get, local: true do |f| %>
+              <%= f.text_field :word, placeholder: ' 検索するグループ名を入力', class: "w-75" %>
+              <%= f.submit '検索', class: "btn btn-sm btn-outline-primary" %>
+            <% end %>
+          </div>
+        </div>
+        <% unless current_user.email == 'guest@example.jp' %>
+          <div class="col-3 text-right">
+            <%= link_to '新しいグループを作成する', new_group_path, class: "btn btn-info" %>
+          </div>
+        <% end %>
+      </div>
+
+      <% if @no_results %>
+        <div class="row mt-4">
+          <div class="col">
+            <p>該当するグループはヒットしませんでした</p>
+          </div>
+        </div>
+      <% else %>
+        <div class="row mt-4">
+          <div class="col-11 mx-auto">
+            <div class="row border-top border-bottom">
+              <div class="col-2 py-3 fw-bold">グループ名</div>
+              <div class="col py-3 fw-bold">紹介文</div>
+              <div class="col-2 py-3 fw-bold">メンバー数</div>
+              <div class="col-1 py-3"></div>
+            </div>
+            <% @groups.each do |group| %>
+              <div class="row border-bottom">
+                <div class="col-2 py-2">
+                  <%= link_to group_path(group.id) do %>
+                    <%= group.name %>
+                  <% end %>
+                </div>
+                <div class="col py-2"><%= group.introduction %></div>
+                <div class="col-2 py-2 pl-4">
+                  <i class="fa-solid fa-user-group"></i> <%= group.user_groups.count %>
+                </div>
+                <div class="col-1 py-2">
+                  <% if group.is_owned_by?(current_user) %>
+                    <%= link_to '編集', edit_group_path(group.id), class: "btn btn-sm btn-success" %>
+                  <% elsif group.user_groups.exists?(user_id: current_user) %>
+                    <%= link_to '脱退', group_user_groups_path(group_id: group.id), method: :delete, class: "btn btn-sm btn-danger" %>
+                  <% else %>
+                    <%= link_to '参加', group_user_groups_path(group_id: group.id), method: :post, class: "btn btn-sm btn-primary" %>
+                  <% end %>
+                </div>
+              </div>
+            <% end %>
+          </div>
+          <!-- ページネーションの記述 -->
+          <%= paginate @groups %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
