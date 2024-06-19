@@ -29,6 +29,7 @@ Rails.application.routes.draw do
     end
 
     get 'search' => 'searches#search'
+    get 'search_group' => 'searches#search_group'
     resource :map, only: [:show]
   end
 
@@ -47,11 +48,11 @@ Rails.application.routes.draw do
       resources :comments, only: [:destroy]
     end
     resources :comments, only: [:index, :destroy]
-
     resources :groups, only: [:index, :show, :delete]
 
     get 'search' => 'searches#search'
     get 'search_comment' => 'searches#search_comment'
+    get 'search_group' => 'searches#search_group'
     resource :map, only: [:show]
   end
 

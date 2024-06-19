@@ -40,4 +40,17 @@ class Admin::SearchesController < ApplicationController
       render :comments_search_results
     end
   end
+
+  def search_group
+    @search_query = params[:word]  # 検索キーワードを受け取る
+    if @no_results = @search_query.blank?  # 空欄のまま検索した時
+      flash.now[:info] = '検索するグループ名を入力してください。'
+      render :groups_search_results
+    else
+      groups = Group.where("name LIKE ?", "%#{@search_query}%")  # 部分一致でグループを検索
+      @no_results = groups.blank?  # グループの検索結果が空かどうかを判定
+      @comments = groups.page(params[:page])
+      render :groups_search_results
+    end
+  end
 end

@@ -1,0 +1,62 @@
+<div class="container">
+  <div class="row my-4">
+    <div class="col">
+      <div class="row d-flex justify-content-between">
+        <div class="col">
+          <h3>"<%= @search_query %>" を含むコメント一覧（管理者）</h3>
+        </div>
+        <div class="col d-flex justify-content-end">
+          <div class="search_form search_group_form">
+            <%= form_with url: search_group_path, method: :get, local: true do |f| %>
+              <%= f.text_field :word, placeholder: ' コメントの検索ワードを入力',class: "w-75" %>
+              <%= f.submit '検索', class: "btn btn-sm btn-outline-primary" %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+
+      <% if @no_results %>
+        <div class="row mt-4">
+          <div class="col">
+            <p>該当するグループはヒットしませんでした</p>
+          </div>
+        </div>
+      <% else %>
+        <div class="row mt-4">
+          <div class="col-11 mx-auto">
+            <div class="row border-top border-bottom">
+              <div class="col-2 py-3 fw-bold">グループ名</div>
+              <div class="col py-3 fw-bold">紹介文</div>
+              <div class="col-2 py-3 fw-bold">メンバー数</div>
+              <div class="col-1 py-3"></div>
+            </div>
+            <% @groups.each do |group| %>
+              <div class="row border-bottom">
+                <div class="col-2 py-2">
+                  <%= link_to group_path(group.id) do %>
+                    <%= group.name %>
+                  <% end %>
+                </div>
+                <div class="col py-2"><%= group.introduction %></div>
+                <div class="col-2 py-2 pl-4">
+                  <i class="fa-solid fa-user-group"></i> <%= group.user_groups.count %>
+                </div>
+                <div class="col-1 py-2">
+                    <%= link_to '編集', search_group_path(group.id), class: "btn btn-sm btn-success" %>
+                  <% elsif group.includesUser?(current_user)%>
+                    <%= link_to '脱退', group_user_groups_path(group_id: group.id), method: :delete, class: "btn btn-sm btn-danger" %>
+                  <% else %>
+                    <%= link_to '参加', group_user_groups_path(group_id: group.id), method: :post, class: "btn btn-sm btn-primary" %>
+                  <% end %>
+                </div>
+              </div>
+            <% end %>
+          </div>
+        </div>
+      <% end %>
+
+      <!-- ページネーションの記述 -->
+      <%= paginate @comments %>
+    </div>
+  </div>
+</div>
