@@ -26,7 +26,9 @@
           <% @comments.each do |comment| %>
             <div class="row border-bottom">
               <div class="col-2 py-3">
-                <%= image_tag comment.user.get_profile_image(30 , 30), class: "rounded-circle" %>　<%= comment.user.name %>
+                <%= link_to admin_user_path(comment.user.id), class: "text-decoration-none text-dark" do %>
+                  <%= image_tag comment.user.get_profile_image(30 , 30), class: "rounded-circle" %>　<%= comment.user.name %>
+                <% end %>
               </div>
               <div class="col-7 py-3"><%= comment.comment %></div>
               <div class="col-2 py-3"><%= comment.created_at.strftime('%Y/%m/%d' + ' ' + '%H:%M') %></div>

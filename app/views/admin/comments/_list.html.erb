@@ -11,7 +11,7 @@
       </div>
       <div class="row">
         <!-- コメントの内容を表示 -->
-        <div class="col mt-1"><%= comment.comment %></div>
+        <div class="col mt-1"><%= simple_format(comment.comment) %></div>
       </div>
       <div class="row mt-2">
         <div class="col d-flex justify-content-end">

@@ -21,7 +21,7 @@ async function initMap() {
   const {AdvancedMarkerElement} = await google.maps.importLibrary("marker")
 
   // 地図の中心と倍率は公式から変更
-  map = new Map(document.getElementById("map"), {
+  map = new Map(document.getElementById("show-map"), {
     center: { lat: default_latitude, lng: default_longitude },
     zoom: 15,
     mapId: "DEMO_MAP_ID",

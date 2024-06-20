@@ -10,26 +10,26 @@
       </div>
 
       <div class="row mt-2">
-        <div class="col-7 border">
-          <div id="admin-map"></div>
+        <div class="col-7 px-0">
+          <div id="admin-index-map"></div>
         </div>
 
-        <div class="col ml-2 overflow-auto" style="height: 600px;">
+        <div class="col ml-2 overflow-auto posts" style="height: 600px;">
           <% @posts.each do |post| %>
             <%= link_to admin_post_path(post.id), class: "text-dark text-decoration-none" do %>
               <div class="row posts">
                 <div class="col border py-1">
                   <div class="row">
                     <div class="col-3 pr-0">スポット名：</div>
-                    <div class="col pl-0"><%= post.name %></div>
+                    <div class="col pl-0"><%= post.name.truncate(20) %></div>
                   </div>
                   <div class="row">
                     <div class="col-3 pr-0">場所の説明：</div>
-                    <div class="col pl-0"><%= post.caption.truncate(22) %></div>
+                    <div class="col pl-0"><%= post.caption.truncate(20) %></div>
                   </div>
                   <div class="row">
                     <div class="col-3 pr-0">住　所　　：</div>
-                    <div class="col pl-0"><%= post.address %></div>
+                    <div class="col pl-0"><%= post.address.truncate(20) %></div>
                   </div>
                   <!-- ユーザー名と画像以外は投稿詳細へ遷移させたいけど、仕様上不可 -->
                   <%= link_to admin_user_path(post.user_id), class: "text-dark text-decoration-none" do %>
@@ -49,4 +49,4 @@
   </div>
 </div>
 
-<%= javascript_pack_tag 'admin_map', 'data-turbolinks-track': 'reload' %>
+<%= javascript_pack_tag 'admin_index_map', 'data-turbolinks-track': 'reload' %>

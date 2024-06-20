@@ -9,32 +9,32 @@
         </div>
       </div>
 
-      <div class="row justify-content-between mt-2">
-        <div class="col-6 border" style="height: 500px;">
-          <div id="map"></div>
+      <div class="row d-flex justify-content-between mt-2">
+        <div class="col-6 px-0">
+          <div id="show-map"></div>
         </div>
 
-        <div class="col-5">
+        <div class="col ml-3">
           <div class="row">
             <div class="col">
               <div class="row border-top">
-                <div class="col-5 py-3">投稿者</div>
+                <div class="col-4 py-3">投稿者</div>
                 <div class="col py-3"><%= link_to @post.user.name, user_path(@post.user_id) %></div>
               </div>
               <div class="row border-top">
-                <div class="col-5 py-3">店名（場所の名前）</div>
+                <div class="col-4 py-3">店名（場所の名前）</div>
                 <div class="col py-3"><%= @post.name %></div>
               </div>
               <div class="row border-top">
-                <div class="col-5 py-3">説明（感想など）</div>
-                <div class="col py-3"><%= @post.caption %></div>
+                <div class="col-4 py-3">説明（感想など）</div>
+                <div class="col py-3"><%= simple_format(@post.caption) %></div>
               </div>
               <div class="row border-top">
-                <div class="col-5 py-3">住所</div>
+                <div class="col-4 py-3">住所</div>
                 <div class="col py-3"><%= @post.address %></div>
               </div>
               <div class="row border-top">
-                <div class="col-5 py-3">投稿日時</div>
+                <div class="col-4 py-3">投稿日時</div>
                 <div class="col py-3"><%= @post.created_at.strftime('%Y/%m/%d(%a)' + '　' + '%H:%M') %></div>
               </div>
             </div>
@@ -43,13 +43,13 @@
           <% if @post.user_id == current_user.id %>
             <div class="row">
               <div class="col d-flex justify-content-end">
-                <%= link_to '編集する', edit_post_path(@post.id), class: "btn btn-sm btn-success" %>
+                <%= link_to '編集する', edit_post_path(@post.id), class: "btn btn-sm btn-success", data: {turbolinks: "false"} %>
               </div>
             </div>
           <% end %>
 
           <!-- 投稿に対するコメント -->
-          <div id="comment_list">
+          <div id="comment_list" class="mt-4">
             <%= render 'public/comments/list', post: @post, comment: @comment %>
           </div>
           <%= render 'public/comments/form', post: @post, comment: @comment %>
@@ -59,4 +59,4 @@
   </div>
 </div>
 
-<%= javascript_pack_tag 'map', 'data-turbolinks-track': 'reload' %>
+<%= javascript_pack_tag 'show_map', 'data-turbolinks-track': 'reload' %>

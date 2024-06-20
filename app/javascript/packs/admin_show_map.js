@@ -6,24 +6,24 @@
 // ライブラリの読み込み
 let map;
 const postsData = $('#adminPostsData')
-// console.log(postsData)
 const posts = postsData.data('json')
 let default_latitude = 35.681236
 let default_longitude = 139.767125
-// if (posts.length >= 1) {
-//   const index = posts.length - 1
-//   const default_post = posts[index]
-//   default_latitude = default_post.latitude
-//   default_longitude = default_post.longitude
-// }
+
+if (posts !== undefined && posts !== null && posts.length >= 1) {
+  const index = posts.length - 1
+  const default_post = posts[index]
+  default_latitude = default_post.latitude
+  default_longitude = default_post.longitude
+}
 
 async function initMap() {
   const { Map } = await google.maps.importLibrary("maps");
   const {AdvancedMarkerElement} = await google.maps.importLibrary("marker")
 
   // 地図の中心と倍率は公式から変更
-  map = new Map(document.getElementById("admin-map"), {
-    center: { lat: 35.681236, lng: 139.767125 },
+  map = new Map(document.getElementById("admin-show-map"), {
+    center: { lat: default_latitude, lng: default_longitude},
     zoom: 15,
     mapId: "DEMO_MAP_ID",
     mapTypeControl: false
