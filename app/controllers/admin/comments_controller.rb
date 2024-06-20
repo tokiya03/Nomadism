@@ -10,8 +10,10 @@ class Admin::CommentsController < ApplicationController
     @post = @comment.post
     if @comment.destroy
       flash.now[:success] = 'コメントを削除しました。'
+      redirect_to request.referer
     else
       flash.now[:danger] = 'コメントの削除に失敗しました。'
+      redirect_to request.referer
     end
   end
 end
