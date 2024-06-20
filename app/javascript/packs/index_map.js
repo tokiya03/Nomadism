@@ -40,7 +40,6 @@ async function initMap() {
 
       const contentString = `
         <div class="information container p-0" style="max-width: 300px;">
-          <p class="text-muted">一覧画面です</p>
           <p class="text-muted"><i class="fa-solid fa-user"></i> ${userName}</p>
           <p class="text-muted"><i class="fa-solid fa-shop"></i> ${spotName}</p>
           <p class="text-muted"><i class="fa-solid fa-location-dot"></i> ${address}</p>
