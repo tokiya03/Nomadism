@@ -9,31 +9,31 @@
         </div>
       </div>
 
-      <div class="row justify-content-between mt-2">
-        <div class="col-5 border" style="height: 500px;">
-          <div id="admin-map"></div>
+      <div class="row d-flex justify-content-between mt-2">
+        <div class="col-6 px-0">
+          <div id="admin-show-map"></div>
         </div>
 
-        <div class="col-6">
+        <div class="col ml-3">
           <div class="row">
             <div class="col">
-              <div class="row border-top d-flex align-items-middle">
+              <div class="row border-top">
                 <div class="col-4 py-3">投稿者</div>
                 <div class="col py-3"><%= link_to @post.user.name, admin_user_path(@post.user_id) %></div>
               </div>
-              <div class="row border-top d-flex align-items-middle">
+              <div class="row border-top">
                 <div class="col-4 py-3">店名（場所の名前）</div>
                 <div class="col py-3"><%= @post.name %></div>
               </div>
               <div class="row border-top">
                 <div class="col-4 py-3">説明（感想など）</div>
-                <div class="col py-3"><%= @post.caption %></div>
+                <div class="col py-3"><%= simple_format(@post.caption) %></div>
               </div>
-              <div class="row border-top d-flex align-items-middle">
+              <div class="row border-top">
                 <div class="col-4 py-3">住所</div>
                 <div class="col py-3"><%= @post.address %></div>
               </div>
-              <div class="row border-top d-flex align-items-middle">
+              <div class="row border-top">
                 <div class="col-4 py-3">投稿日時</div>
                 <div class="col py-3"><%= @post.created_at.strftime('%Y/%m/%d(%a)' + '　' + '%H:%M') %></div>
               </div>
@@ -43,12 +43,12 @@
 
           <div class="row mt-3">
             <div class="col d-flex justify-content-end">
-              <%= link_to '削除する', admin_post_path(@post.id), method: :delete, "data-confirm" => "投稿を削除しますか？", class: "btn btn-sm btn-danger" %>
+              <%= link_to '投稿を削除する', admin_post_path(@post.id), method: :delete, "data-confirm" => "投稿を削除しますか？", class: "btn btn-sm btn-danger" %>
             </div>
           </div>
 
           <!-- 投稿に対するコメント -->
-          <div id="comment_list">
+          <div id="comment_list" class="mt-4">
             <%= render 'admin/comments/list', post: @post %>
           </div>
         </div>
@@ -57,4 +57,4 @@
   </div>
 </div>
 
-<%= javascript_pack_tag 'admin_map', 'data-turbolinks-track': 'reload' %>
+<%= javascript_pack_tag 'admin_show_map', 'data-turbolinks-track': 'reload' %>

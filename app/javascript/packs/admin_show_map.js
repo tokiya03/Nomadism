@@ -22,7 +22,7 @@ async function initMap() {
   const {AdvancedMarkerElement} = await google.maps.importLibrary("marker")
 
   // 地図の中心と倍率は公式から変更
-  map = new Map(document.getElementById("admin-map"), {
+  map = new Map(document.getElementById("admin-show-map"), {
     center: { lat: 35.681236, lng: 139.767125 },
     zoom: 15,
     mapId: "DEMO_MAP_ID",
@@ -54,6 +54,7 @@ async function initMap() {
 
       const contentString = `
         <div class="information container p-0" style="max-width: 300px;">
+          <p class="text-muted">詳細画面です（管理者）</p>
           <p class="text-muted"><i class="fa-solid fa-user"></i> ${userName}</p>
           <p class="text-muted"><i class="fa-solid fa-shop"></i> ${spotName}</p>
           <p class="text-muted"><i class="fa-solid fa-location-dot"></i> ${address}</p>

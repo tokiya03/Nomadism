@@ -25,15 +25,15 @@
                   <div class="col border py-1">
                     <div class="row">
                       <div class="col-3 pr-0">スポット名：</div>
-                      <div class="col pl-0"><%= post.name %></div>
+                      <div class="col pl-0"><%= post.name.truncate(20) %></div>
                     </div>
                     <div class="row">
                       <div class="col-3 pr-0">場所の説明：</div>
-                      <div class="col pl-0"><%= post.caption.truncate(22) %></div>
+                      <div class="col pl-0"><%= post.caption.truncate(20) %></div>
                     </div>
                     <div class="row">
                       <div class="col-3 pr-0">住　所　　：</div>
-                      <div class="col pl-0"><%= post.address %></div>
+                      <div class="col pl-0"><%= post.address.truncate(20) %></div>
                     </div>
                     <div class="row">
                       <div class="col d-flex justify-content-end">
