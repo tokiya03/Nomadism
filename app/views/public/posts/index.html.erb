@@ -36,14 +36,14 @@
                     <div class="col-3 pr-0">住　所　　：</div>
                     <div class="col pl-0"><%= post.address.truncate(20) %></div>
                   </div>
-                  <!-- ユーザー名と画像以外は投稿詳細へ遷移させたいけど、仕様上不可 -->
-                  <%= link_to user_path(post.user_id), class: "text-dark text-decoration-none" do %>
-                    <div class="row">
-                      <div class="col d-flex justify-content-end">
+                  <div class="row">
+                    <div class="col px-0 d-flex justify-content-end">
+                      <%= link_to '', post_path(post.id), style: "flex-grow: 1;" %>
+                      <%= link_to user_path(post.user_id), class: "text-dark text-decoration-none pr-3" do %>
                         <%= image_tag post.user.get_profile_image(30, 30), class: "rounded-circle mr-1" %> <%= post.user.name %>
-                      </div>
+                      <% end %>
                     </div>
-                  <% end %>
+                  </div>
                 </div>
               </div>
             <% end %>

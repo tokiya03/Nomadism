@@ -7,12 +7,20 @@
   box-sizing: border-box;
 }
 
+header, footer {
+  color: #fff;
+  background-color: #ac6f3c;
+}
+
 .logo {
+  font-size: 27px;
   font-family: Futura, sans-serif;
+  vertical-align: bottom;
 }
 
 .search_notice {
-  font-size: 11px;
+  font-size: 10px;
+  color: #fff;
 }
 
 .posts {
@@ -49,12 +57,6 @@
 .new_users:nth-child(even),
 .new_posts:nth-child(even) {
   margin-right: 0;
-}
-
-.search_comment_form,
-.search_group_form {
-  width: 100%;
-  justify-content: end;
 }
 
 .new_users:nth-child(3),

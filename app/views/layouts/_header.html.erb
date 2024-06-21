@@ -1,8 +1,8 @@
 <!-- 画面幅がlgサイズ(992px)以下の場合、ハンバーガーメニューに切り替えて表示 -->
 <nav class="navbar navbar-expand-lg navbar-light">
   <div class="container">
-    <%= link_to root_path, class: "navbar-brand ml-3 logo" do %>
-      <%= image_tag 'logo.jpg', size: "40x40" %>Nomadism
+    <%= link_to root_path, class: "navbar-brand ml-3" do %>
+      <%= image_tag 'logo.jpg', size: "40x40" %><span class="text-decoration-none text-light logo">Nomadism</span>
     <% end %>
 
     <!-- 検索窓を表示 -->
@@ -16,8 +16,8 @@
       <ul class="navbar-nav ml-auto">
         <!-- 管理者ログイン時以外はaboutページへのリンクを表示 -->
         <% unless admin_signed_in? %>
-          <li class="nav-item">
-            <%= link_to about_path, class: "nav-link text-dark btn" do %>
+          <li class="nav-item text-light">
+            <%= link_to about_path, class: "nav-link text-light btn" do %>
               <i class="fa-solid fa-diagram-project"></i> About
               <p class="mb-0 text-center" style="font-size: 10px;">アバウト</p>
             <% end %>
@@ -27,36 +27,36 @@
         <!-- 管理者ログインの場合の表示 -->
         <% if admin_signed_in? %>
           <li class="nav-item">
-            <%= link_to admin_root_path, class: "nav-link text-dark btn" do %>
+            <%= link_to admin_root_path, class: "nav-link text-light" do %>
               <i class="fa-solid fa-user"></i> MyPage
               <p class="mb-0 text-center" style="font-size: 10px;">マイページ</p>
             <% end %>
           </li>
           <li class="nav-item">
-            <%= link_to admin_users_path, class: "nav-link text-dark btn" do %>
+            <%= link_to admin_users_path, class: "nav-link text-light" do %>
               <i class="fa-solid fa-users"></i> Users
               <p class="mb-0 text-center" style="font-size: 10px;">ユーザー一覧</p>
             <% end %>
           <li class="nav-item">
-            <%= link_to admin_posts_path, class: "nav-link text-dark btn" do %>
+            <%= link_to admin_posts_path, class: "nav-link text-light" do %>
               <i class="fa-solid fa-satellite"></i> Posts
               <p class="mb-0 text-center" style="font-size: 10px;">投稿一覧</p>
             <% end %>
           </li>
           <li class="nav-item">
-            <%= link_to admin_comments_path, class: "nav-link text-dark btn" do %>
+            <%= link_to admin_comments_path, class: "nav-link text-light" do %>
               <i class="fa-solid fa-comments"></i> Comments
               <p class="mb-0 text-center" style="font-size: 10px;">コメント一覧</p>
             <% end %>
           </li>
           <li class="nav-item">
-            <%= link_to admin_groups_path, class: "nav-link text-dark btn" do %>
+            <%= link_to admin_groups_path, class: "nav-link text-light" do %>
               <i class="fa-solid fa-people-group"></i> Groups
               <p class="mb-0 text-center" style="font-size: 10px;">グループ一覧</p>
             <% end %>
           </li>
           <li class="nav-item">
-            <%= link_to destroy_admin_session_path, method: :delete, class: "nav-link text-dark btn" do %>
+            <%= link_to destroy_admin_session_path, method: :delete, class: "nav-link text-light" do %>
               <i class="fa-solid fa-arrow-right-from-bracket"></i> Logout
               <p class="mb-0 text-center" style="font-size: 10px;">ログアウト</p>
             <% end %>
@@ -64,32 +64,32 @@
         <!-- 会員ログインの場合の表示 -->
         <% elsif user_signed_in? %>
           <li class="nav-item">
-            <%= link_to mypage_path, class: "nav-link text-dark btn" do %>
+            <%= link_to mypage_path, class: "nav-link text-light" do %>
               <i class="fa-solid fa-user"></i> MyPage
               <p class="mb-0 text-center" style="font-size: 10px;">マイページ</p>
             <% end %>
           </li>
           <li class="nav-item">
-            <%= link_to posts_path, class: "nav-link text-dark btn" do %>
+            <%= link_to posts_path, class: "nav-link text-light" do %>
               <i class="fa-solid fa-satellite"></i> Posts
               <p class="mb-0 text-center" style="font-size: 10px;">投稿一覧</p>
             <% end %>
           </li>
           <li class="nav-item">
-            <%= link_to groups_path, class: "nav-link text-dark btn" do %>
+            <%= link_to groups_path, class: "nav-link text-light" do %>
               <i class="fa-solid fa-people-group"></i> Groups
               <p class="mb-0 text-center" style="font-size: 10px;">グループ一覧</p>
             <% end %>
           </li>
           <li class="nav-item">
-            <%= link_to destroy_user_session_path, method: :delete, class: "nav-link text-dark btn" do %>
+            <%= link_to destroy_user_session_path, method: :delete, class: "nav-link text-light" do %>
               <i class="fa-solid fa-arrow-right-from-bracket"></i> Logout
               <p class="mb-0 text-center" style="font-size: 10px;">ログアウト</p>
             <% end %>
           </li>
         <% else %>
           <li class="nav-item">
-            <%= link_to new_user_session_path, class: "nav-link text-dark btn" do %>
+            <%= link_to new_user_session_path, class: "nav-link text-light" do %>
               <i class="fa-solid fa-arrow-right-to-bracket"></i> Login
               <p class="mb-0 text-center" style="font-size: 10px;">ログイン</p>
             <% end %>

@@ -36,9 +36,10 @@
                       <div class="col pl-0"><%= post.address.truncate(20) %></div>
                     </div>
                     <div class="row">
-                      <div class="col d-flex justify-content-end">
-                        <%= link_to admin_post_path(post.user_id), class: "text-dark text-decoration-none" do %>
-                          <%= image_tag post.user.get_profile_image(30, 30), class: "rounded-circle" %> <%= post.user.name %>
+                      <div class="col px-0 d-flex justify-content-end">
+                        <%= link_to '',admin_post_path(post.id), style: "flex-grow: 1;" %>
+                        <%= link_to admin_user_path(post.user_id), class: "text-dark text-decoration-none pr-3" do %>
+                          <%= image_tag post.user.get_profile_image(30, 30), class: "rounded-circle mr-1" %> <%= post.user.name %>
                         <% end %>
                       </div>
                     </div>
