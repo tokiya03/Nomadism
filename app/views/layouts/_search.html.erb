@@ -2,19 +2,19 @@
   <div class="col">
     <% if admin_signed_in? %>
       <div class="search_form">
-        <%= form_with url: admin_search_path, method: :get, local: true do |f| %>
-          <%= f.text_field :word, placeholder: ' 検索ワードを入力' %>
-          <%= f.submit '検索', class: "btn btn-sm btn-outline-success" %>
+        <%= form_with url: admin_search_path, method: :get, local: true, class: "d-flex" do |f| %>
+          <%= f.text_field :word, placeholder: 'Search posts or users', class: "form-control" %>
+          <%= f.submit '検索', class: "btn btn-sm btn-outline-light ml-2" %>
         <% end %>
-        <p class="my-1 search_notice">※ユーザー検索は先頭に"@"を付けてください</p>
+        <p class="mt-1 mb-0 search_notice">※ユーザー検索は先頭に"@"を付けてください</p>
       </div>
     <% elsif user_signed_in? %>
       <div class="search_form">
-        <%= form_with url: search_path, method: :get, local: true do |f| %>
-          <%= f.text_field :word, placeholder: ' 検索ワードを入力' %>
-          <%= f.submit '検索', class: "btn btn-sm btn-outline-success" %>
+        <%= form_with url: search_path, method: :get, local: true, class: "d-flex" do |f| %>
+          <%= f.text_field :word, placeholder: 'Search posts or users', class: "form-control" %>
+          <%= f.submit '検索', class: "btn btn-sm btn-outline-light ml-2" %>
         <% end %>
-        <p class="my-1 mb-0 search_notice">※ユーザー検索は先頭に"@"を付けてください</p>
+        <p class="mt-1 mb-0 search_notice">※ユーザー検索は先頭に"@"を付けてください</p>
       </div>
     <% end %>
   </div>

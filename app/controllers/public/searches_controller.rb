@@ -18,6 +18,13 @@ class Public::SearchesController < ApplicationController
         "name LIKE ? OR caption LIKE ? OR address LIKE ?",                # 部分一致で投稿(場所名/説明(感想)/住所)を検索
         "%#{@search_query}%", "%#{@search_query}%", "%#{@search_query}%"
       )
+
+      @posts_json = @posts.with_user_name
+      respond_to do |format|
+        format.html
+        format.json { render json: @posts.with_user_name }
+      end
+
       if @no_results = @search_query.blank?                               # 空欄のまま検索した時
         flash[:info] = '検索内容を入力してください。'
         render :posts_search_results
@@ -31,7 +38,7 @@ class Public::SearchesController < ApplicationController
   def search_group
     @search_query = params[:word]                                        # 検索キーワードを受け取る
     if @no_results = @search_query.blank?                                # 空欄のまま検索した時
-      flash.now[:info] = '検索するグループ名を入力してください。'
+      flash[:info] = '検索するグループ名を入力してください。'
       render :groups_search_results
     else
       groups = Group.where("name LIKE ?", "%#{@search_query}%")          # 部分一致でグループを検索

@@ -1,3 +1,5 @@
+<div id="postsData" data-json='<%== @posts_json.to_json %>'></div>
+
 <div class="container">
   <div class="row my-4">
     <div class="col">
@@ -5,17 +7,23 @@
         <div class="col">
           <h3>"<%= @search_query %>" を含む投稿一覧</h3>
         </div>
+        <% unless current_user.email == 'guest@example.jp' %>
+          <div class="col text-right">
+            <%= link_to '新しく投稿する', new_post_path, class: "btn btn-info", data: {turbolinks: "false"} %>
+          </div>
+        <% end %>
       </div>
+
       <% if @no_results %>
-        <div class="row mt-4">
+        <div class="row mt-2">
           <div class="col">
             <p>該当する投稿はヒットしませんでした</p>
           </div>
         </div>
       <% else %>
-        <div class="row mt-4">
-          <div class="col-7 border">
-            <div>GoogleMap</div>
+        <div class="row mt-2">
+          <div class="col-7 px-0">
+            <div id="search-map"></div>
           </div>
 
           <div class="col ml-2 overflow-auto" style="height: 600px;">
@@ -36,9 +44,10 @@
                       <div class="col pl-0"><%= post.address.truncate(20) %></div>
                     </div>
                     <div class="row">
-                      <div class="col d-flex justify-content-end">
-                        <%= link_to user_path(post.user_id), class: "text-dark text-decoration-none" do %>
-                          <%= image_tag post.user.get_profile_image(30, 30), class: "rounded-circle" %> <%= post.user.name %>
+                      <div class="col px-0 d-flex justify-content-end">
+                        <%= link_to '', post_path(post.id), style: "flex-grow: 1;" %>
+                        <%= link_to user_path(post.user_id), class: "text-dark text-decoration-none pr-3" do %>
+                          <%= image_tag post.user.get_profile_image(30, 30), class: "rounded-circle mr-1" %> <%= post.user.name %>
                         <% end %>
                       </div>
                     </div>
@@ -52,3 +61,6 @@
     </div>
   </div>
 </div>
+
+<%= javascript_pack_tag 'search_map', 'data-turbolinks-track': 'reload' %>
+

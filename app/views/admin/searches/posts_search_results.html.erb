@@ -1,3 +1,5 @@
+<div id="adminPostsData" data-json='<%== @posts_json.to_json %>'></div>
+
 <div class="container">
   <div class="row my-4">
     <div class="col">
@@ -6,6 +8,7 @@
           <h3>"<%= @search_query %>" を含む投稿一覧（管理者）</h3>
         </div>
       </div>
+
       <% if @no_results %>
         <div class="row mt-4">
           <div class="col">
@@ -13,9 +16,9 @@
           </div>
         </div>
       <% else %>
-        <div class="row mt-4">
-          <div class="col-7 border">
-            <div>GoogleMap</div>
+        <div class="row mt-2">
+          <div class="col-7 px-0">
+            <div id="admin-search-map"></div>
           </div>
 
           <div class="col ml-2 overflow-auto" style="height: 600px;">
@@ -36,9 +39,10 @@
                       <div class="col pl-0"><%= post.address.truncate(20) %></div>
                     </div>
                     <div class="row">
-                      <div class="col d-flex justify-content-end">
-                        <%= link_to admin_post_path(post.user_id), class: "text-dark text-decoration-none" do %>
-                          <%= image_tag post.user.get_profile_image(30, 30), class: "rounded-circle" %> <%= post.user.name %>
+                      <div class="col px-0 d-flex justify-content-end">
+                        <%= link_to '',admin_post_path(post.id), style: "flex-grow: 1;" %>
+                        <%= link_to admin_user_path(post.user_id), class: "text-dark text-decoration-none pr-3" do %>
+                          <%= image_tag post.user.get_profile_image(30, 30), class: "rounded-circle mr-1" %> <%= post.user.name %>
                         <% end %>
                       </div>
                     </div>
@@ -52,3 +56,5 @@
     </div>
   </div>
 </div>
+
+<%= javascript_pack_tag 'admin_search_map', 'data-turbolinks-track': 'reload' %>
