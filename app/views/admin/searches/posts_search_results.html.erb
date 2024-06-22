@@ -1,3 +1,5 @@
+<div id="adminPostsData" data-json='<%== @posts_json.to_json %>'></div>
+
 <div class="container">
   <div class="row my-4">
     <div class="col">
@@ -6,6 +8,7 @@
           <h3>"<%= @search_query %>" を含む投稿一覧（管理者）</h3>
         </div>
       </div>
+
       <% if @no_results %>
         <div class="row mt-4">
           <div class="col">
@@ -13,9 +16,9 @@
           </div>
         </div>
       <% else %>
-        <div class="row mt-4">
-          <div class="col-7 border">
-            <div>GoogleMap</div>
+        <div class="row mt-2">
+          <div class="col-7 px-0">
+            <div id="admin-search-map"></div>
           </div>
 
           <div class="col ml-2 overflow-auto" style="height: 600px;">
@@ -53,3 +56,5 @@
     </div>
   </div>
 </div>
+
+<%= javascript_pack_tag 'admin_search_map', 'data-turbolinks-track': 'reload' %>
