@@ -40,11 +40,11 @@
                 <h5 class="offset-1">▼新着投稿</h5>
                 <div class="row d-flex justify-content-center">
                   <% @posts.last(4).each do |post| %>
-                    <div class="col-5 border py-2 top_new_posts">
+                    <%= link_to post_path(post.id), class: "col-5 text-dark text-decoration-none border py-2 top_new_posts" do %>
                       場所名：<%= post.name %><br />
                       説明　：<%= post.caption.truncate(24) %><br />
                       住所　：<%= post.address %>
-                    </div>
+                    <% end %>
                   <% end %>
                 </div>
               </div>
