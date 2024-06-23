@@ -1,5 +1,4 @@
 # Nomadism
-<!-- サイト名  案1：Nomadism , 案2：NomadoSpace -->
 
 ## サイト概要
 ### サイトテーマ
@@ -22,7 +21,21 @@
 - オフィスや自宅の外での作業場所を探したい時
 
 ## 設計書
-後ほど作成予定
+## WBS
+https://docs.google.com/spreadsheets/d/1iJGuLhjJ0JOPupbKTQAnpuDO_zZ5o2xVqcyOiUjhgtM/edit?usp=sharing
+
+## ER図
+![portfolio_erd](https://github.com/tokiya03/Nomadism/assets/163287178/cc443fac-222f-4510-80dc-aff2ce3ad9e3)
+
+### UIフロー図
+https://drive.google.com/file/d/1MVCfzRbz887SwFRMyuQUrsTbXuqVQ_dT/view?usp=sharing
+
+### テーブル定義書
+https://docs.google.com/spreadsheets/d/1tGJGeX--NbQJdbeATOUgWmMy1f6NUrEJCDs-5WexfrI/edit?usp=sharing
+
+### アプリケーション詳細設計書
+https://docs.google.com/spreadsheets/d/1ucrgxdbxcnId6w5e-zVaZuaIVnfSWC6qae54kgJ8Kek/edit?usp=sharing
+
 ​
 ## 開発環境
 - OS：Linux(CentOS)
@@ -32,5 +45,6 @@
 - IDE：Cloud9
 
 ## 使用素材
-著作権を考慮し、架空のデータを扱う予定です。<br />
-なお今後、実在するデータを利用する際には、事前に著作権保持者と契約を結んだ上で利用します。
+フリーイラスト素材として以下を利用
+- Canva AI画像生成 ( https://www.canva.com/ja_jp/ai-image-generator/ )
+- 初心者デザイン( https://www.shoshinsha-design.com/ )
