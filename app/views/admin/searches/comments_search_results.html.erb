@@ -34,7 +34,10 @@
               <div class="row border-bottom">
                 <div class="col-2 py-3">
                   <%= link_to admin_user_path(comment.user.id), class: "text-decoration-none text-dark" do %>
-                    <%= image_tag comment.user.get_profile_image(30 , 30), class: "rounded-circle" %>　<%= comment.user.name %>
+                    <%= image_tag comment.user.get_profile_image(30 , 30), class: "rounded-circle mr-1" %>
+                  <% end %>
+                  <%= link_to admin_user_path(comment.user.id) do %>
+                    <%= comment.user.name %>
                   <% end %>
                 </div>
                 <div class="col-7 py-3"><%= comment.comment %></div>
