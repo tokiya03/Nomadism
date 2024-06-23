@@ -25,6 +25,7 @@ class Public::GroupsController < ApplicationController
   end
 
   def show
+    @user = current_user
     @group = Group.find(params[:id])
   end
 

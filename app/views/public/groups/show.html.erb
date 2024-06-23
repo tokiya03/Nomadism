@@ -49,17 +49,19 @@
               <div class="col-2"><%= user.posts.count %></div>
             </div>
           <% end %>
-          <div class="row">
-            <div class="col d-flex justify-content-end mt-3">
-              <% if @group.is_owned_by?(current_user) %>
-                <%= link_to 'グループ情報を編集する', edit_group_path(@group.id), class: "btn btn-sm btn-success" %>
-              <% elsif @group.includesUser?(current_user)%>
-                <%= link_to 'グループから脱退する', group_user_groups_path(group_id: @group.id), method: :delete, class: "btn btn-sm btn-danger" %>
-              <% else %>
-                <%= link_to 'グループに参加する', group_user_groups_path(group_id: @group.id), method: :post, class: "btn btn-sm btn-primary" %>
-              <% end %>
+          <% unless @user.guest_user? %>
+            <div class="row">
+              <div class="col d-flex justify-content-end mt-3">
+                <% if @group.is_owned_by?(current_user) %>
+                  <%= link_to 'グループ情報を編集する', edit_group_path(@group.id), class: "btn btn-sm btn-success" %>
+                <% elsif @group.includesUser?(current_user)%>
+                  <%= link_to 'グループから脱退する', group_user_groups_path(group_id: @group.id), method: :delete, class: "btn btn-sm btn-danger" %>
+                <% else %>
+                  <%= link_to 'グループに参加する', group_user_groups_path(group_id: @group.id), method: :post, class: "btn btn-sm btn-primary" %>
+                <% end %>
+              </div>
             </div>
-          </div>
+          <% end %>
         </div>
       </div>
     </div>
