@@ -41,9 +41,9 @@
               </div>
               <div class="col-1 py-2">
                 <% unless @user.guest_user? %>
-                  <% if group.is_owned_by?(current_user) %>
+                  <% if group.is_owned_by?(@user) %>
                     <%= link_to '編集', edit_group_path(group.id), class: "btn btn-sm btn-success" %>
-                  <% elsif group.includesUser?(current_user)%>
+                  <% elsif group.includesUser?(@user)%>
                     <%= link_to '脱退', group_user_groups_path(group_id: group.id), method: :delete, class: "btn btn-sm btn-danger" %>
                   <% else %>
                     <%= link_to '参加', group_user_groups_path(group_id: group.id), method: :post, class: "btn btn-sm btn-primary" %>
