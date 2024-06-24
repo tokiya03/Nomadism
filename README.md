@@ -21,23 +21,23 @@
 - オフィスや自宅の外での作業場所を探したい時
 
 ## 設計書
-- WBS
+- WBS<br />
 https://docs.google.com/spreadsheets/d/1iJGuLhjJ0JOPupbKTQAnpuDO_zZ5o2xVqcyOiUjhgtM/edit?usp=sharing
 
 - ER図
 ![portfolio_erd](https://github.com/tokiya03/Nomadism/assets/163287178/cc443fac-222f-4510-80dc-aff2ce3ad9e3)
 
-- UIフロー図
+- UIフロー図<br />
 https://drive.google.com/file/d/1MVCfzRbz887SwFRMyuQUrsTbXuqVQ_dT/view?usp=sharing
 
-- テーブル定義書
+- テーブル定義書<br />
 https://docs.google.com/spreadsheets/d/1tGJGeX--NbQJdbeATOUgWmMy1f6NUrEJCDs-5WexfrI/edit?usp=sharing
 
-- アプリケーション詳細設計書
+- アプリケーション詳細設計書<br />
 https://docs.google.com/spreadsheets/d/1ucrgxdbxcnId6w5e-zVaZuaIVnfSWC6qae54kgJ8Kek/edit?usp=sharing
 
 ## 実装テスト
-- テスト仕様書
+- テスト仕様書<br />
 https://docs.google.com/spreadsheets/d/1NQSPLUMr7C-l59Cabi05ECBspOxHT-detDQAqrSSpV0/edit?usp=sharing
 ​
 ## 開発環境
