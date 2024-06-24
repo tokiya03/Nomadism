@@ -18,21 +18,35 @@
             <div class="col">
               <h6>▼現在の状況</h6>
               <div class="row">
-                <div class="col-3 border py-2">会員ユーザー数</div>
-                <div class="col-2 border py-2 text-right"><%= number_with_delimiter(User.where(is_active: true).count) %></div>
-              </div>
-               <!-- 論理削除を実装したら数値が１以上になる -->
-              <div class="row">
-                <div class="col-3 border py-2">退会ユーザー数</div>
-                <div class="col-2 border py-2 text-right"><%= number_with_delimiter(User.where(is_active: false).count) %></div>
-              </div>
-              <div class="row">
-                <div class="col-3 border py-2">合計ユーザー数</div>
-                <div class="col-2 border py-2 text-right"><%= number_with_delimiter(@users.count) %></div>
-              </div>
-              <div class="row">
-                <div class="col-3 border py-2">投稿数</div>
-                <div class="col-2 border py-2 text-right"><%= number_with_delimiter(@posts.count) %></div>
+                <div class="col-5">
+                  <div class="row">
+                    <div class="col-7 border py-2">会員ユーザー数</div>
+                    <div class="col-4 border py-2 text-right"><%= number_with_delimiter(User.where(is_active: true).count) %></div>
+                  </div>
+                   <!-- 論理削除を実装したら数値が１以上になる -->
+                  <div class="row">
+                    <div class="col-7 border py-2">退会ユーザー数</div>
+                    <div class="col-4 border py-2 text-right"><%= number_with_delimiter(User.where(is_active: false).count) %></div>
+                  </div>
+                  <div class="row">
+                    <div class="col-7 border py-2">合計ユーザー数</div>
+                    <div class="col-4 border py-2 text-right"><%= number_with_delimiter(@users.count) %></div>
+                  </div>
+                </div>
+                <div class="col-5">
+                  <div class="row">
+                    <div class="col-7 border py-2">投稿数</div>
+                    <div class="col-4 border py-2 text-right"><%= number_with_delimiter(@posts.count) %></div>
+                  </div>
+                  <div class="row">
+                    <div class="col-7 border py-2">コメント数</div>
+                    <div class="col-4 border py-2 text-right"><%= number_with_delimiter(@comments.count) %></div>
+                  </div>
+                  <div class="row">
+                    <div class="col-7 border py-2">グループ数</div>
+                    <div class="col-4 border py-2 text-right"><%= number_with_delimiter(@groups.count) %></div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>

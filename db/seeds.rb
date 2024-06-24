@@ -132,6 +132,77 @@ Post.find_or_create_by!(name: "Galette") do |post|
   post.user = Asami
 end
 
+# デフォルトのグループを作成（10件）
+Group.find_or_create_by!(name: "勉強場所探し ( in Tokyo )") do |group|
+  group.introduction = "東京都内で勉強場所を探している方集まれ！"
+  group.group_image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/sample-group1.jpg"), filename:"sample-group1.jpg")
+  group.owner_id = 2
+  group.users << User.find_by(id: group.owner_id)
+end
+
+Group.find_or_create_by!(name: "勉強場所探し ( in Toyama )") do |group|
+  group.introduction = "富山県内で勉強場所を探している方集まれ！"
+  group.group_image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/sample-group2.jpg"), filename:"sample-group2.jpg")
+  group.owner_id = 4
+  group.users << User.find_by(id: group.owner_id)
+end
+
+Group.find_or_create_by!(name: "ワークスペース探し ( in Tokyo )") do |group|
+  group.introduction = "東京都内でオフィス街で仕事ができる場所を探している方集まれ！"
+  group.group_image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/sample-group3.jpg"), filename:"sample-group3.jpg")
+  group.owner_id = 6
+  group.users << User.find_by(id: group.owner_id)
+end
+
+Group.find_or_create_by!(name: "推しカフェ") do |group|
+  group.introduction = "この店のココが推しといった店がある方集まれ！"
+  group.group_image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/sample-group4.jpg"), filename:"sample-group4.jpg")
+  group.owner_id = 7
+  group.users << User.find_by(id: group.owner_id)
+end
+
+Group.find_or_create_by!(name: "おしゃカフェ探し") do |group|
+  group.introduction = "全国のおしゃれなカフェを探している方集まれ！"
+  group.group_image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/sample-group5.jpg"), filename:"sample-group5.jpg")
+  group.owner_id = 10
+  group.users << User.find_by(id: group.owner_id)
+end
+
+Group.find_or_create_by!(name: "ワークスペース探し ( in Osaka )") do |group|
+  group.introduction = "大阪都内でオフィス街で仕事ができる場所を探している方集まれ！"
+  group.group_image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/sample-group6.jpg"), filename:"sample-group6.jpg")
+  group.owner_id = 4
+  group.users << User.find_by(id: group.owner_id)
+end
+
+Group.find_or_create_by!(name: "勉強場所探し ( in Osaka )") do |group|
+  group.introduction = "大阪府内で勉強場所を探している方集まれ！"
+  group.group_image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/sample-group7.jpg"), filename:"sample-group7.jpg")
+  group.owner_id = 2
+  group.users << User.find_by(id: group.owner_id)
+end
+
+Group.find_or_create_by!(name: "勉強場所探し ( in Hayata )") do |group|
+  group.introduction = "博多市周辺で勉強場所を探している方集まれ！"
+  group.group_image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/sample-group8.jpg"), filename:"sample-group8.jpg")
+  group.owner_id = 5
+  group.users << User.find_by(id: group.owner_id)
+end
+
+Group.find_or_create_by!(name: "ワークスペース探し ( in Susukino )") do |group|
+  group.introduction = "すすきの周辺で仕事ができる場所を探している方集まれ！"
+  group.group_image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/sample-group9.jpg"), filename:"sample-group9.jpg")
+  group.owner_id = 8
+  group.users << User.find_by(id: group.owner_id)
+end
+
+Group.find_or_create_by!(name: "勉強場所探し ( in Nagoya )") do |group|
+  group.introduction = "名古屋市周辺で勉強場所を探している方集まれ！"
+  group.group_image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/sample-group10.jpg"), filename:"sample-group10.jpg")
+  group.owner_id = 3
+  group.users << User.find_by(id: group.owner_id)
+end
+
 
 ## 管理者ログイン用
 admin_email = ENV["ADMIN_EMAIL"]

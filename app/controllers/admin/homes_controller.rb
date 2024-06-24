@@ -5,5 +5,7 @@ class Admin::HomesController < ApplicationController
     @admin = Admin.find(1)
     @users = User.all.order(id: 'desc')
     @posts = Post.all.order(id: 'desc')
+    @comments = Comment.all
+    @groups = Group.all
   end
 end
