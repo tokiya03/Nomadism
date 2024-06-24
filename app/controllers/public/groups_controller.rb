@@ -29,16 +29,6 @@ class Public::GroupsController < ApplicationController
     @group = Group.find(params[:id])
   end
 
-  def join
-    @group = Group.find(params[:group_id])
-    if @group.users << current_user
-      flash[:success] = '成功しました。'
-    else
-      flash[:danger] = '失敗しました。'
-    end
-    request.referer
-  end
-
   def edit
     @group = Group.find(params[:id])
     if @group.owner_id != current_user.id
