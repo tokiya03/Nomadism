@@ -21,7 +21,7 @@ class Public::ChatsController < ApplicationController
     else
       @messages = Chat.all
       @group = Group.find(params[:group_id])
-      flash.now[:danger] = @message.errors.full_messages.first
+      flash.now[:info] = @message.errors.full_messages.first
       render :index
     end
   end
