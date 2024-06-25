@@ -54,6 +54,9 @@
           <% unless @user.guest_user? %>
             <div class="row">
               <div class="col d-flex justify-content-end mt-3">
+                <% if @group.includesUser?(@user)%>
+                  <%= link_to 'グループメンバーと話す', group_chats_path(group_id: @group.id), class: "btn btn-sm btn-info mr-4" %>
+                <% end %>
                 <% if @group.is_owned_by?(@user) %>
                   <%= link_to 'グループ情報を編集する', edit_group_path(@group.id), class: "btn btn-sm btn-success" %>
                 <% elsif @group.includesUser?(@user)%>

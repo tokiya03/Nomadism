@@ -5,11 +5,15 @@ class Public::UsersController < ApplicationController
   def mypage
     @user = current_user
     @posts = @user.posts
+    @groups = @user.groups
+    @current_page = 'mypage'
   end
 
   def show
     @user = User.find(params[:id])
     @posts = @user.posts
+    @groups = @user.groups
+    @current_page = 'show'
   end
 
   def edit

@@ -4,7 +4,9 @@
       <div class="search_form">
         <%= form_with url: admin_search_path, method: :get, local: true, class: "d-flex" do |f| %>
           <%= f.text_field :word, placeholder: 'Search posts or users', class: "form-control" %>
-          <%= f.submit '検索', class: "btn btn-sm btn-outline-light ml-2" %>
+          <%= button_tag type: :submit, class: "btn btn-sm btn-outline-light ml-1" do %>
+            <i class="fa-solid fa-magnifying-glass"></i>
+          <% end %>
         <% end %>
         <p class="mt-1 mb-0 search_notice">※ユーザー検索は先頭に"@"を付けてください</p>
       </div>
@@ -12,7 +14,9 @@
       <div class="search_form">
         <%= form_with url: search_path, method: :get, local: true, class: "d-flex" do |f| %>
           <%= f.text_field :word, placeholder: 'Search posts or users', class: "form-control" %>
-          <%= f.submit '検索', class: "btn btn-sm btn-outline-light ml-2" %>
+          <%= button_tag type: :submit, class: "btn btn-sm btn-outline-light ml-1" do %>
+            <i class="fa-solid fa-magnifying-glass"></i>
+          <% end %>
         <% end %>
         <p class="mt-1 mb-0 search_notice">※ユーザー検索は先頭に"@"を付けてください</p>
       </div>

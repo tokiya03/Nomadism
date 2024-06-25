@@ -28,6 +28,17 @@ ja:
         updated_at: 更新日
       admin:
         email: Eメール
+      post:
+        name: スポット名
+        caption: 説明
+        address: 住所
+      comment:
+        comment: コメント
+      group:
+        name: グループ名
+        introduction: 紹介文
+      chat:
+        message: メッセージ
     models:
       user: ユーザー
   devise:
