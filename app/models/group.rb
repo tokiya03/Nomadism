@@ -2,6 +2,7 @@ class Group < ApplicationRecord
 
   has_many :user_groups, dependent: :destroy
   has_many :users, through: :user_groups, source: :user
+  has_many :chats, dependent: :destroy
 
   has_one_attached :group_image
 

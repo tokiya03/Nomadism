@@ -1,0 +1,49 @@
+<div class="container">
+  <div class="row my-1">
+    <div class="col">
+      <div class="row">
+        <div class="col border py-3 group_name d-flex justify-content-between">
+          <%= link_to'＜ 戻る', group_path(@group.id), class: "text-decoration-none text-white py-1" %>
+          <span class="h3 px-0 mb-0"><%= @group.name %></span>
+          <span></span>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col border">
+          <div class="row">
+            <div class="col pt-4 pb-2 overflow-auto" style="height: 565px;">
+              <% @messages.each do |message| %>
+                <!-- メッセージを送信したユーザが自分自身か判定 -->
+                <% if message.user_id == current_user.id %>
+                  <div class="d-flex justify-content-end mb-2">
+                    <span class="bg-primary text-white rounded p-2 mt-1">︎<%= message.message %></span>
+                    <%= link_to user_path(message.user_id) do %>
+                      <%= image_tag message.user.get_profile_image(35, 35), class: "rounded-circle ml-2" %>
+                    <% end %>
+                  </div>
+                <% elsif %>
+                  <div class="d-flex justify-content-start mb-2">
+                    <%= link_to user_path(message.user_id) do %>
+                      <%= image_tag message.user.get_profile_image(35, 35), class: "rounded-circle mr-2" %>
+                    <% end %>
+                    <span class="bg-dark text-white rounded p-2 mt-1">︎<%= message.message %></span>
+                  </div>
+                <% end %>
+              <% end %>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col boder-top bg-light py-2">
+              <%= form_with model: @message, url: group_chats_path(group_id: @group.id), method: :post, local: true, class: "d-flex align-items-center gap-7" do |f| %>
+                <%= f.text_field :message, autofocus: true, placeholder: "メッセージを入力", class: "flex-grow-1" %>
+                <%= button_tag type: :submit, class: "btn btn-md btn-success" do %>
+                  <i class="fa-regular fa-paper-plane"></i>
+                <% end %>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
