@@ -39,7 +39,7 @@ class Public::PostsController < ApplicationController
     @post = Post.find(params[:id])
     if @post.user_id != current_user.id
       flash[:info] = '投稿者以外は編集画面に遷移できません。'
-      redirect_to posts_path
+      redirect_to post_path(@post.id)
     end
   end
 
