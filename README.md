@@ -25,7 +25,7 @@
 https://docs.google.com/spreadsheets/d/1iJGuLhjJ0JOPupbKTQAnpuDO_zZ5o2xVqcyOiUjhgtM/edit?usp=sharing
 
 - ER図
-![portfolio_erd](https://github.com/tokiya03/Nomadism/assets/163287178/cc443fac-222f-4510-80dc-aff2ce3ad9e3)
+![portfolio_erd](https://github.com/tokiya03/Nomadism/assets/163287178/5a5eca85-3a44-4a45-835d-2957f0a48ba7)
 
 - UIフロー図<br />
 https://drive.google.com/file/d/1MVCfzRbz887SwFRMyuQUrsTbXuqVQ_dT/view?usp=sharing
