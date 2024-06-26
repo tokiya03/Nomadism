@@ -8,6 +8,7 @@ class Admin::UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @posts = @user.posts
+    @groups = @user.groups
   end
 
   def edit
@@ -25,10 +26,10 @@ class Admin::UsersController < ApplicationController
     end
   end
 
-  # 物理削除する時の記述
   def destroy
     @user = User.find(params[:id])
-    if @user.destroy
+    @group = @user.groups.where(owner_id: @user.id)
+    if @group.destroy_all && @user.destroy
       flash[:info] = '退会処理が完了しました。'
       redirect_to admin_users_path
     else

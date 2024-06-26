@@ -23,6 +23,27 @@
         <div class="col py-3 font-weight-bold">登録日</div>
         <div class="col py-3 text-right"><%= @user.created_at.strftime('%Y/%m/%d') %></div>
       </div>
+
+      <div class="row">
+        <div class="col mt-3 font-weight-bold">■ 参加グループ</div>
+      </div>
+      <div class="row">
+        <% unless @groups.blank? %>
+          <div class="col mt-2">
+            <ul>
+              <% @groups.each do |group| %>
+                <li class="ml-3">
+                  <%= link_to group_path(group.id) do %>
+                    <%= group.name.truncate(24) %>
+                  <% end %>
+                </li>
+              <% end %>
+            </ul>
+          </div>
+        <% else %>
+          <div class="col mt-2">なし</div>
+        <% end %>
+      </div>
     </div>
 
     <div class="col-9">

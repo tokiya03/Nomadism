@@ -45,7 +45,9 @@ class Public::UsersController < ApplicationController
   # 物理削除する時の記述
   def destroy
     @user = User.find(params[:id])
+    @group = @user.groups.where(owner_id: @user.id)
     if @user.id == current_user.id
+      @group.destroy_all
       @user.destroy
       flash[:info] = '退会処理が完了しました。'
       redirect_to new_user_registration_path
