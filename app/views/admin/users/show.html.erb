@@ -33,7 +33,7 @@
             <ul>
               <% @groups.each do |group| %>
                 <li class="ml-3">
-                  <%= link_to group_path(group.id) do %>
+                  <%= link_to admin_group_path(group.id) do %>
                     <%= group.name.truncate(24) %>
                   <% end %>
                 </li>
