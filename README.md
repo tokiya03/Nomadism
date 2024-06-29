@@ -15,7 +15,7 @@
 - 自宅だと家族やルームメイトがいたり、近所の声が毎日聞こえてきて集中できない人
 - 充電しながらSNSを見たりするなど、ゆっくりくつろげる場所を知りたい人
 - 大人 ( 社会人 ) から子供 ( 学生 ) まで
-​
+
 ### 主な利用シーン
 - Wi-Fiとコンセントがあるカフェや学習スペースを探したい時
 - オフィスや自宅の外での作業場所を探したい時
@@ -27,9 +27,9 @@ https://docs.google.com/spreadsheets/d/1iJGuLhjJ0JOPupbKTQAnpuDO_zZ5o2xVqcyOiUjh
 - ER図
 ![portfolio_erd](https://github.com/tokiya03/Nomadism/assets/163287178/20c56e2d-56c6-4135-8ed4-ec997b1f876f)
 
-
-- UIフロー図<br />
-https://drive.google.com/file/d/1MVCfzRbz887SwFRMyuQUrsTbXuqVQ_dT/view?usp=sharing
+- UIフロー図
+![uiflows_user](https://github.com/tokiya03/Nomadism/assets/163287178/00f28bf0-0656-4cd9-96b5-34581d0d8129)
+![uiflows_admin](https://github.com/tokiya03/Nomadism/assets/163287178/cda48e27-0ba0-4410-859e-cdb03d5197dd)
 
 - テーブル定義書<br />
 https://docs.google.com/spreadsheets/d/1tGJGeX--NbQJdbeATOUgWmMy1f6NUrEJCDs-5WexfrI/edit?usp=sharing
@@ -40,7 +40,7 @@ https://docs.google.com/spreadsheets/d/1ucrgxdbxcnId6w5e-zVaZuaIVnfSWC6qae54kgJ8
 ## 実装テスト
 - テスト仕様書<br />
 https://docs.google.com/spreadsheets/d/1NQSPLUMr7C-l59Cabi05ECBspOxHT-detDQAqrSSpV0/edit?usp=sharing
-​
+
 ## 開発環境
 - OS：Linux(CentOS)
 - 言語：HTML,CSS,JavaScript,Ruby,SQL
