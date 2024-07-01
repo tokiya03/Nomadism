@@ -6,6 +6,7 @@ class Public::CommentsController < ApplicationController
     @post = Post.find(params[:post_id])
     @comment = current_user.comments.new(comment_params)
     @comment.post_id = @post.id
+    @comment.score = (Language.get_data(comment_params[:caption]) + 1) * 50
     if @comment.comment.blank?
       flash.now[:info] = 'コメントを入力してください。'
     elsif @comment.save
