@@ -74,60 +74,70 @@ end
 # デフォルトの投稿を作成（10件）
 Post.find_or_create_by!(name: "テストCafe") do |post|
   post.caption = "充電可能なコンセントと無料Wi-Fiが備わっているのと、カフェラテが美味しかったので、とても作業が捗りました。"
+  post.score = (Language.get_data(post.caption) + 1) * 50
   post.address = "東京都世田谷区"
   post.user = Justin
 end
 
 Post.find_or_create_by!(name: "緑Cafe") do |post|
   post.caption = "観葉植物に囲まれていて、いい感じの曲が流れていて、とても集中して学習を行うことができました。"
+  post.score = (Language.get_data(post.caption) + 1) * 50
   post.address = "東京都杉並区"
   post.user = Sara
 end
 
 Post.find_or_create_by!(name: "青びん珈琲") do |post|
   post.caption = "無料のWi-Fiが時間制限なしで使えるため、3時間も滞在して作業を行なってしまいました。"
+  post.score = (Language.get_data(post.caption) + 1) * 50
   post.address = "大阪府堺市"
   post.user = Lucas
 end
 
 Post.find_or_create_by!(name: "緑の丘") do |post|
   post.caption = "晴れた日には市内を一望できるので、気分よく学習を行うことができる場所でした。"
+  post.score = (Language.get_data(post.caption) + 1) * 50
   post.address = "富山県富山市"
   post.user = Selena
 end
 
 Post.find_or_create_by!(name: "Amazing Summer Cafe") do |post|
   post.caption = "店内がとても明るかったので、気分よく作業を行うことができる場所でした。"
+  post.score = (Language.get_data(post.caption) + 1) * 50
   post.address = "北海道釧路市"
   post.user = Tom
 end
 
 Post.find_or_create_by!(name: "庭Cafe") do |post|
   post.caption = "綺麗な庭園を眺めながら作業ができたので、とても過ごしやすかったです。"
+  post.score = (Language.get_data(post.caption) + 1) * 50
   post.address = "宮城県仙台市"
   post.user = Risa
 end
 
 Post.find_or_create_by!(name: "ノマドWork") do |post|
   post.caption = "時間単位で料金が発生してしまいますが、コンセントと無料Wi-Fiがあり、リモート会議ができる個室などがあって、1日中作業ができるコアワーキングスペースです。"
+  post.score = (Language.get_data(post.caption) + 1) * 50
   post.address = "広島県廿日市"
   post.user = James
 end
 
 Post.find_or_create_by!(name: "不思議の森コーヒー") do |post|
   post.caption = "広い店内でテーブル席と1人席には充電可能なコンセントがあって、無料で使えるWi-Fiがあるので、落ち着いて作業することができます。"
+  post.score = (Language.get_data(post.caption) + 1) * 50
   post.address = "福岡県北九州市"
   post.user = Alice
 end
 
 Post.find_or_create_by!(name: "777 Lounge") do |post|
   post.caption = "晴れた日には開放感抜群の景色が広がるお店で、外を見るだけで気分転換になりました。"
+  post.score = (Language.get_data(post.caption) + 1) * 50
   post.address = "愛媛県大洲市"
   post.user = Eito
 end
 
 Post.find_or_create_by!(name: "Galette") do |post|
   post.caption = "おしゃれなで広々とした店内で、とても過ごしやすいところでした。"
+  post.score = (Language.get_data(post.caption) + 1) * 50
   post.address = "東京都渋谷区"
   post.user = Asami
 end
@@ -202,7 +212,6 @@ Group.find_or_create_by!(name: "勉強場所探し ( in Nagoya )") do |group|
   group.owner_id = 3
   group.users << User.find_by(id: group.owner_id)
 end
-
 
 ## 管理者ログイン用
 admin_email = ENV["ADMIN_EMAIL"]

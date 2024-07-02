@@ -68,7 +68,7 @@ ActiveRecord::Schema.define(version: 2024_07_01_135004) do
     t.text "comment", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.decimal "score", precision: 5, scale: 3
+    t.decimal "score", precision: 5, scale: 3, default: "0.0", null: false
     t.index ["post_id"], name: "index_comments_on_post_id"
     t.index ["user_id"], name: "index_comments_on_user_id"
   end
@@ -95,7 +95,7 @@ ActiveRecord::Schema.define(version: 2024_07_01_135004) do
     t.datetime "updated_at", precision: 6, null: false
     t.float "latitude", default: 0.0, null: false
     t.float "longitude", default: 0.0, null: false
-    t.decimal "score", precision: 5, scale: 3
+    t.decimal "score", precision: 5, scale: 3, default: "0.0", null: false
     t.index ["user_id"], name: "index_posts_on_user_id"
   end
 
