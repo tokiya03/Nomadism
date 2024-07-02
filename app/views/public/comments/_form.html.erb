@@ -22,6 +22,8 @@
                 平均感情分析値 ( コメントのみ )：<span class="sentiment-score text-primary"><b><%= average_score.to_i %>点</b></span> /100点
               <% elsif average_score >= 25 %>
                 平均感情分析値 ( コメントのみ )：<span class="sentiment-score text-warning"><b><%= average_score.to_i %>点</b></span> /100点
+              <% elsif average_score == 0 %>
+                平均感情分析値 ( コメントのみ )：<span class="sentiment-score"><b>0点</b></span> /100点
               <% else %>
                 平均感情分析値 ( コメントのみ )：<span class="sentiment-score text-"><b><%= average_score.to_i %>点</b></span> /100点
               <% end %>
