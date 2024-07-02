@@ -1,0 +1,14 @@
+<% if post.comments.present? %>
+  <% scores = post.comments.pluck(:score) %>
+  <% total_score = scores.sum %>
+  <% average_score = total_score.to_f / post.comments.count %>
+  <% if average_score >= 75 %>
+    コメントの感情分析値 ( 平均 )：<span class="sentiment-score text-success"><b><%= average_score.to_i %>点</b></span> /100点
+  <% elsif average_score >= 50 %>
+    コメントの感情分析値 ( 平均 )：<span class="sentiment-score text-primary"><b><%= average_score.to_i %>点</b></span> /100点
+  <% elsif average_score >= 25 %>
+    コメントの感情分析値 ( 平均 )：<span class="sentiment-score text-warning"><b><%= average_score.to_i %>点</b></span> /100点
+  <% else %>
+    コメントの感情分析値 ( 平均 )：<span class="sentiment-score text-"><b><%= average_score.to_i %>点</b></span> /100点
+  <% end %>
+<% end %>

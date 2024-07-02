@@ -1,3 +1,4 @@
 $('#flash-message').html("<%= j(render 'layouts/flash-message') %>");
 $('#comment_count').html("<%= j(render 'public/comments/count', post: @post) %>");
 $('#comment_list').html("<%= j(render 'public/comments/list', post: @post, comment: @comment) %>");
+$('#comment_sentiment_point').html("<%= j(render 'public/comments/sentiment_point', post: @post) %>");
