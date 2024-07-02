@@ -30,6 +30,20 @@
                 <div class="col py-3"><%= simple_format(@post.caption) %></div>
               </div>
               <div class="row border-top">
+                <div class="col-4 py-3">感情分析スコア</div>
+                <div class="col py-3">
+                  <% if @post.score >= 75 %>
+                    <span class="sentiment-score text-success"><b><%= @post.score.to_i %>点</b></span> /100点
+                  <% elsif @post.score >= 50 %>
+                    <span class="sentiment-score text-primary"><b><%= @post.score.to_i %>点</b></span> /100点
+                  <% elsif @post.score >= 25 %>
+                    <span class="sentiment-score text-warning"><b><%= @post.score.to_i %>点</b></span> /100点
+                  <% else %>
+                    <span class="sentiment-score text-danger"><b><%= @post.score.to_i %>点</b></span> /100点
+                  <% end %>
+                </div>
+              </div>
+              <div class="row border-top">
                 <div class="col-4 py-3">住所</div>
                 <div class="col py-3"><%= @post.address %></div>
               </div>

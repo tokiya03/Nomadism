@@ -213,14 +213,6 @@ Group.find_or_create_by!(name: "勉強場所探し ( in Nagoya )") do |group|
   group.users << User.find_by(id: group.owner_id)
 end
 
-Post.find_or_create_by!(name: "Sapurino") do |post|
-  post.caption = "ガッテム！"
-  post.score = (Language.get_data(post.caption) + 1) * 50
-  post.address = "滋賀県大津市"
-  post.user = Selena
-end
-
-
 ## 管理者ログイン用
 admin_email = ENV["ADMIN_EMAIL"]
 admin_password = ENV["ADMIN_PASSWORD"]
