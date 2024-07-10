@@ -31,6 +31,7 @@ class Public::GroupsController < ApplicationController
 
   def edit
     @group = Group.find(params[:id])
+    @users = @group.users.pluck(:name, :id)
     if @group.owner_id != current_user.id
       flash[:info] = 'グループオーナー以外は編集画面に遷移できません。'
       redirect_to group_path(@group.id)

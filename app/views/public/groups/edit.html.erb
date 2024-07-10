@@ -21,6 +21,12 @@
               <%= f.text_area :introduction, class: "form-control" %>
             </div>
 
+            <div class="field mb-3">
+              <%= f.label :グループ所有者 %><br />
+              <%= f.select :owner_id, @users, {prompt: "選択してください"}, class: "form-control", id: "user_id" %>
+
+            </div>
+
             <div class="field mb-4">
               <%= f.label :グループ画像 %><br />
               <%= f.file_field :group_image %>
