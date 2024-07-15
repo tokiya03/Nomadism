@@ -5,14 +5,14 @@
       <%= image_tag 'logo.jpg', size: "40x40" %><span class="text-decoration-none text-light logo">Nomadism</span>
     <% end %>
 
-    <!-- 検索窓を表示 -->
-    <%= render 'layouts/search' %>
-
     <%= button_tag(type: "button", class: "navbar-toggler", data: {toggle: "collapse", target: "#navbarNavDropdown", controls: "navbarNavDropdown", expanded: "false", label: "Toggle navigation"}) do %>
       <%= content_tag(:span, '', class: "navbar-toggler-icon") %>
     <% end %>
 
     <div class="collapse navbar-collapse" id="navbarNavDropdown">
+      <!-- 検索窓を表示 -->
+      <%= render 'layouts/search' %>
+
       <ul class="navbar-nav ml-auto">
         <!-- 管理者ログイン時以外はaboutページへのリンクを表示 -->
         <% unless admin_signed_in? %>
