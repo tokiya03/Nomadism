@@ -3,7 +3,6 @@ class Public::ChatsController < ApplicationController
 
   def index
     @group = Group.find(params[:group_id])
-    @messages = @group.chats
     @message = Chat.new
 
     unless @group.includesUser?(current_user)
@@ -16,10 +15,8 @@ class Public::ChatsController < ApplicationController
     @message = current_user.chats.new(chat_params)
     @message.group_id = params[:group_id]
     if @message.save
-      # 後に非同期通信化するので、一時的なリダイレクト設定
       redirect_to request.referer
     else
-      @messages = Chat.all
       @group = Group.find(params[:group_id])
       flash.now[:info] = @message.errors.full_messages.first
       render :index

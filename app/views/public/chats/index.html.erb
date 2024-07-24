@@ -11,13 +11,13 @@
       <div class="row">
         <div class="col border">
           <div class="row">
-            <% if @messages.blank? %>
+            <% if @group.chats.blank? %>
               <div class="col py-4" style="height: 565px;">
                 <p class="mt-2">メッセージはありません。</p>
               </div>
             <% else %>
               <div class="col pt-4 pb-2 overflow-auto" style="height: 565px;">
-                <% @messages.each do |message| %>
+                <% @group.chats.each do |message| %>
                   <!-- メッセージを送信したユーザが自分自身か判定 -->
                   <% if message.user_id == current_user.id %>
                     <div id="scroll-inner" class="d-flex justify-content-end mb-2">
