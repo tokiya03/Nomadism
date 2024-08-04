@@ -35,6 +35,11 @@ main {
   border-color: rgba(248, 249, 250);
 }
 
+.post_lists {
+  height: 600px;
+  margin-left: 0.5rem;
+}
+
 .posts {
   margin-bottom: 5px;
 }
@@ -144,6 +149,18 @@ main {
 @media screen and (max-width:768px) {
   main {
     min-height: 76vh;
+  }
+
+  .group_image {
+    width: 100%;
+  }
+
+  .page_title {
+    margin-top: 1rem;
+  }
+
+  .post_lists {
+    margin: 1rem 0 0;
   }
 }
 /* スマートフォンサイズ（425px）以下の際に適用される設定 */

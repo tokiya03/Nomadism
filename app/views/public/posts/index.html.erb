@@ -15,11 +15,11 @@
       </div>
 
       <div class="row mt-2">
-        <div class="col-7 px-0">
+        <div class="col-lg-7 col-md-12 px-0">
           <div id="index-map"></div>
         </div>
 
-        <div class="col ml-2 overflow-auto" style="height: 600px;">
+        <div class="col-lg col-md-12 overflow-auto post_lists">
           <% @posts.each do |post| %>
             <%= link_to post_path(post.id), class: "text-dark text-decoration-none" do %>
               <div class="row posts">
