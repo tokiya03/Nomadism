@@ -91,6 +91,19 @@ main {
    font-size: 0.875rem;
 }
 
+.search_group_box {
+  width: 75%;
+}
+
+.search_group_btn {
+  margin-left: 0.25rem;
+  margin-right: 1.5rem;
+}
+
+.new_group {
+  text-align: right;
+}
+
 .pagination{
   margin: 20px auto 0;
   display: flex;
@@ -139,14 +152,36 @@ main {
   gap: 7px;
 }
 
+@media screen and (max-width: 1200px) {
+  .search_group_box {
+    width: 100%;
+  }
+
+  .search_group_btn {
+    margin-right: 0;
+  }
+}
+
 /* タブレット横置きサイズ（1024px）以下の際に適用される設定 */
-@media screen and (max-width:1024px) {
+@media screen and (max-width: 1024px) {
   main {
     min-height: 82vh;
   }
 }
+
+@media screen and (max-width: 991px) {
+  .new_group_btn {
+    font-size: 0;
+  }
+
+  .new_group_btn:before {
+    font-size: 1rem;
+    content: '＋';
+  }
+}
+
 /* タブレット縦置きサイズ（768px）以下の際に適用される設定 */
-@media screen and (max-width:768px) {
+@media screen and (max-width: 768px) {
   main {
     min-height: 76vh;
   }
@@ -163,6 +198,7 @@ main {
     margin: 1rem 0 0;
   }
 }
+
 /* スマートフォンサイズ（425px）以下の際に適用される設定 */
 @media screen and (max-width:425px) {
   main {

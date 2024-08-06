@@ -9,7 +9,7 @@
       </div>
 
       <div class="row">
-        <div class="col-6 mx-auto">
+        <div class="col-xl-6 col-lg-7 col-sm-9 mx-auto">
           <%= form_with model: @post, url: post_path(@post.id), method: :patch, local: true do |f| %>
             <%= f.hidden_field :user_id, value: current_user.id %>
 
