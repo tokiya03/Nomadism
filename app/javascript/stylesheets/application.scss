@@ -152,6 +152,7 @@ main {
   gap: 7px;
 }
 
+/* col-xlサイズ（1200px）以下の際に適用される設定 */
 @media screen and (max-width: 1200px) {
   .search_group_box {
     width: 100%;
@@ -159,6 +160,14 @@ main {
 
   .search_group_btn {
     margin-right: 0;
+  }
+  .search_new_group_btn {
+    font-size: 0;
+  }
+
+  .search_new_group_btn:before {
+    font-size: 1rem;
+    content: '＋';
   }
 }
 
@@ -169,7 +178,8 @@ main {
   }
 }
 
-@media screen and (max-width: 991px) {
+/* col-lgサイズ（992px）以下の際に適用される設定 */
+@media screen and (max-width: 992px) {
   .new_group_btn {
     font-size: 0;
   }
