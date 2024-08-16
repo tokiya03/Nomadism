@@ -12,7 +12,7 @@
       <div class="row">
         <div class="col">
           <div class="d-flex justify-content-center mt-2">
-            <%= image_tag 'top_image.jpg', size: "536x380" %>
+            <%= image_tag 'top_image.jpg', size: "536x380", class: "top_image" %>
           </div>
         </div>
       </div>
@@ -67,7 +67,7 @@
               </div>
               <div class="row">
                 <div class="col">
-                  <%= link_to 'ゲストログイン ( 閲覧用 )', users_guest_sign_in_path, method: :post, class: "btn btn-lg btn-block btn-secondary sign_in" %>
+                  <%= link_to 'ゲストログイン ( 閲覧用 )', users_guest_sign_in_path, method: :post, class: "btn btn-lg btn-block btn-secondary sign_in mb-3" %>
                 </div>
               </div>
             </div>

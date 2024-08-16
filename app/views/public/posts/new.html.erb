@@ -2,14 +2,14 @@
   <div class="row my-4">
     <div class="col">
       <div class="row">
-        <div class="col offset-1">
+        <div class="col offset-md-1 offset-0">
           <h3>新規投稿フォーム</h3>
           <%= render 'layouts/error', obj: @post %>
         </div>
       </div>
 
       <div class="row">
-        <div class="col-xl-6 col-lg-7 col-sm-9 mx-auto">
+        <div class="col-xl-6 col-lg-7 col-sm-10 mx-auto">
           <%= form_with model: @post, url: posts_path, method: :post, local: true do |f| %>
             <div class="field mb-3">
               <%= f.label :スポット名 %><br />
