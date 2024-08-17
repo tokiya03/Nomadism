@@ -67,7 +67,7 @@ main {
 }
 
 .new_users,
-.new_posts{
+.new_posts {
   margin: 0 0.4rem 0.3rem 0;
 }
 
@@ -104,7 +104,7 @@ main {
   text-align: right;
 }
 
-.pagination{
+.pagination {
   margin: 20px auto 0;
   display: flex;
   justify-content: center;
@@ -187,6 +187,15 @@ main {
   .new_group_btn:before {
     font-size: 1rem;
     content: '＋';
+  }
+
+  .admin_menu {
+    margin-top: 1rem;
+  }
+
+  .new_users,
+  .new_posts {
+    margin: 0 0 0.25rem 0 !important;
   }
 }
 
