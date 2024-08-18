@@ -21,17 +21,17 @@
         <div class="col mt-4">
           <% if admin_signed_in? %>
             <div class="row">
-              <div class="col">
-                <%= link_to 'マイページへ移動する', admin_root_path, class: "btn btn-lg btn-block btn-success" %>
+              <div class="col-lg-3 col-md-6 col-12">
+                <%= link_to 'マイページへ移動する', admin_root_path, class: "btn btn-lg btn-block btn-success mb-3" %>
               </div>
-              <div class="col">
-                <%= link_to 'ユーザー一覧へ移動する', admin_users_path, class: "btn btn-lg btn-block btn-warning" %>
+              <div class="col-lg-3 col-md-6 col-12">
+                <%= link_to 'ユーザー一覧へ移動する', admin_users_path, class: "btn btn-lg btn-block btn-warning mb-3" %>
               </div>
-              <div class="col">
-                <%= link_to '投稿一覧へ移動する', admin_posts_path, class: "btn btn-lg btn-block btn-info" %>
+              <div class="col-lg-3 col-md-6 col-12">
+                <%= link_to '投稿一覧へ移動する', admin_posts_path, class: "btn btn-lg btn-block btn-info mb-3" %>
               </div>
-              <div class="col">
-                <%= link_to 'ログアウトする', destroy_admin_session_path, method: :delete, class: "btn btn-lg btn-block btn-danger" %>
+              <div class="col-lg-3 col-md-6 col-12">
+                <%= link_to 'ログアウトする', destroy_admin_session_path, method: :delete, class: "btn btn-lg btn-block btn-danger mb-3" %>
               </div>
             </div>
           <% elsif user_signed_in? %>
