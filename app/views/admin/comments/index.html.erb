@@ -2,21 +2,21 @@
   <div class="row my-4">
     <div class="col">
       <div class="row d-flex justify-content-between">
-        <div class="col">
+        <div class="col-md-6 col-sm-12">
           <h3>コメント一覧（管理者）</h3>
         </div>
-        <div class="col">
+        <div class="col-md-6 col-sm-12">
           <div class="search_form search_comment_form">
             <%= form_with url: admin_search_comment_path, method: :get, local: true, class: "d-flex justify-content-end" do |f| %>
-              <%= f.text_field :word, placeholder: 'コメントの検索ワードを入力', class: "form-control w-75" %>
-              <%= f.submit '検索', class: "btn btn-sm btn-outline-primary ml-1 mr-4" %>
+              <%= f.text_field :word, placeholder: 'コメントの検索ワードを入力', class: "form-control search_group_box" %>
+              <%= f.submit '検索', class: "btn btn-sm btn-outline-primary search_group_btn" %>
             <% end %>
           </div>
         </div>
       </div>
 
       <div class="row mt-4">
-        <div class="col-11 mx-auto">
+        <div class="col-xl-11 col-lg-12 mx-auto">
           <div class="row border-top border-bottom">
             <div class="col-2 py-3 fw-bold">投稿者</div>
             <div class="col-5 py-3 fw-bold">コメントの内容</div>
