@@ -16,25 +16,25 @@
       </div>
 
       <div class="row mt-4">
-        <div class="col-xl-11 col-lg-12 mx-auto">
+        <div class="col-xl-11 col-12 mx-auto">
           <div class="row border-top border-bottom">
-            <div class="col-lg-3 col-md-4 col-sm-12 py-3 fw-bold">グループ名</div>
-            <div class="col-lg col-md col-sm-12 py-3 fw-bold">紹介文</div>
-            <div class="col-md-2 col-sm-12 py-3 fw-bold">メンバー数</div>
-            <div class="col-lg-1 col-md-2 col-sm-12 py-3"></div>
+            <div class="col-lg-3 col-md-4 col-12 list-title">グループ名</div>
+            <div class="col-lg col-md col-12 list-title">紹介文</div>
+            <div class="col-md-2 col-12 list-title">メンバー数</div>
+            <div class="col-lg-1 col-md-2 col-12 list-title"></div>
           </div>
           <% @groups.each do |group| %>
             <div class="row border-bottom">
-              <div class="col-lg-3 col-md-4 col-sm-12 py-2">
+              <div class="col-lg-3 col-md-4 col-12 list-content">
                 <%= link_to admin_group_path(group.id) do %>
                   <%= group.name %>
                 <% end %>
               </div>
-              <div class="col-lg col-md col-sm-12 py-2"><%= simple_format(group.introduction) %></div>
-              <div class="col-md-2 col-sm-12 py-2 pl-4">
+              <div class="col-lg col-md col-12 list-content"><%= simple_format(group.introduction) %></div>
+              <div class="col-md-2 col-10 list-content">
                 <i class="fa-solid fa-user-group"></i> <%= group.user_groups.count %>
               </div>
-              <div class="col-lg-1 col-md-2 col-sm-12 py-2">
+              <div class="col-lg-1 col-md-2 col-2 list-content">
                 <%= link_to '削除', admin_group_path(group.id), method: :delete, "data-confirm" => "本当にグループを削除しますか？", class: "btn btn-sm btn-danger" %>
               </div>
             </div>

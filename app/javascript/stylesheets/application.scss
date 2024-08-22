@@ -35,6 +35,19 @@ main {
   border-color: rgba(248, 249, 250);
 }
 
+.list-title {
+  padding: 1rem 0;
+  font-weight: bold;
+}
+
+.list-content {
+  padding: 0.5rem 0;
+}
+
+.list-content:nth-child(3) {
+  padding-left: 1.5rem;
+}
+
 .post_lists {
   height: 600px;
   margin-left: 0.5rem;
@@ -217,6 +230,34 @@ main {
 
   .page_title {
     margin-top: 1rem;
+  }
+
+  .list-title {
+    padding: 0;
+  }
+
+  .list-title:first-child {
+    padding-top: 0.5rem;
+  }
+
+  .list-title:last-child {
+    padding-bottom: 0.5rem;
+  }
+
+  .list-content {
+    padding: 0;
+  }
+
+  .list-content:first-child {
+    padding-top: 0.5rem;
+  }
+
+  .list-content:nth-child(3) {
+    padding-left: 0rem;
+  }
+
+  .list-content:last-child {
+    padding-bottom: 0.5rem;
   }
 }
 
