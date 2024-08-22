@@ -7,13 +7,14 @@
         </div>
       </div>
 
-      <div class="row mt-2">
+      <div class="row mt-4">
         <div class="col-lg-9 col-md-12 mx-auto">
           <div class="row border-top border-bottom">
             <div class="col py-3"></div>
             <div class="col py-3 fw-bold"><b>ユーザー名</b></div>
             <div class="col py-3 fw-bold"><b>メールアドレス</b></div>
             <div class="col py-3 fw-bold"><b>登録日</b></div>
+            <div class="col py-3 fw-bold"><b>投稿数</b></div>
           </div>
           <% @users.each do |user| %>
             <div class="row border-bottom">
@@ -29,13 +30,14 @@
               </div>
               <div class="col py-2"><%= user.email %></div>
               <div class="col py-2"><%= user.created_at.strftime('%Y/%m/%d') %></div>
+              <div class="col py-2"><%= number_with_delimiter(user.posts.count) %></div>
             </div>
           <% end %>
+
+          <!-- ページネーションの記述 -->
+          <%= paginate @users %>
         </div>
       </div>
-
-      <!-- ページネーションの記述 -->
-      <%= paginate @users %>
     </div>
   </div>
 </div>
