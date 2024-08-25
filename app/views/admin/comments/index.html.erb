@@ -16,48 +16,45 @@
       </div>
 
       <div class="row mt-4">
-        <div class="col">
-          <table class="table">
-            <tr>
-              <th>投稿者</th>
-              <th>コメントの内容</th>
-              <th>感情分析スコア</th>
-              <th>投稿日時</th>
-              <th></th>
-            </tr>
-            <% @comments.each do |comment| %>
-              <tr>
-                <td>
-                  <%= link_to admin_user_path(comment.user.id), class: "text-decoration-none text-dark" do %>
-                    <%= image_tag comment.user.get_profile_image(30 , 30), class: "rounded-circle mr-1" %>
-                  <% end %>
-                  <%= link_to admin_user_path(comment.user.id) do %>
-                    <%= comment.user.name %>
-                  <% end %>
-                </td>
-                <td>
-                  <%= comment.comment %>
-                </td>
-                <td>
-                  <% if comment.score >= 75 %>
-                    <span class="sentiment-score text-success"><b><%= comment.score.to_i %>点</b></span> /100点
-                  <% elsif comment.score >= 50 %>
-                    <span class="sentiment-score text-primary"><b><%= comment.score.to_i %>点</b></span> /100点
-                  <% elsif comment.score >= 25 %>
-                    <span class="sentiment-score text-warning"><b><%= comment.score.to_i %>点</b></span> /100点
-                  <% else %>
-                    <span class="sentiment-score text-danger"><b><%= comment.score.to_i %>点</b></span> /100点
-                  <% end %>
-                </td>
-                <td>
-                  <%= comment.created_at.strftime('%Y/%m/%d' + ' ' + '%H:%M') %>
-                </td>
-                <td>
-                  <%= link_to '削除', admin_comment_path(comment.id),  method: :delete, "data-confirm" => "本当にコメントを削除しますか？", class: "btn btn-sm btn-danger" %>
-                </td>
-              </tr>
-            <% end %>
-          </table>
+        <div class="col-xl-10 col-lg-11 col-12 mx-auto">
+          <div class="row border-top border-bottom">
+            <div class="col-md-2 col-12 list-title">投稿者</div>
+            <div class="col-md col-12 list-title">コメントの内容</div>
+            <div class="col-md-3 col-12 list-title">感情分析スコア</div>
+            <div class="col-lg-2 col-md-3 col-12 list-title">投稿日時</div>
+            <div class="col-md-1 col-2 list-title"></div>
+          </div>
+
+          <% @comments.each do |comment| %>
+            <div class="row border-bottom">
+              <div class="col-md-2 col-12 list-content">
+                <%= link_to admin_user_path(comment.user.id), class: "text-decoration-none text-dark" do %>
+                  <%= image_tag comment.user.get_profile_image(30 , 30), class: "rounded-circle mr-1" %>
+                <% end %>
+                <%= link_to admin_user_path(comment.user.id) do %>
+                  <%= comment.user.name %>
+                <% end %>
+              </div>
+              <div class="col-md col-12 list-content"><%= simple_format(comment.comment) %></div>
+              <div class="col-md-3 col-12 list-content">
+                <% if comment.score >= 75 %>
+                  <span class="sentiment-score text-success"><b><%= comment.score.to_i %>点</b></span> /100点
+                <% elsif comment.score >= 50 %>
+                  <span class="sentiment-score text-primary"><b><%= comment.score.to_i %>点</b></span> /100点
+                <% elsif comment.score >= 25 %>
+                  <span class="sentiment-score text-warning"><b><%= comment.score.to_i %>点</b></span> /100点
+                <% else %>
+                  <span class="sentiment-score text-danger"><b><%= comment.score.to_i %>点</b></span> /100点
+                <% end %>
+              </div>
+              <div class="col-lg-2 col-md-3 col-10 list-content">
+                <%= comment.created_at.strftime('%Y/%m/%d' + ' ' + '%H:%M') %>
+              </div>
+              <div class="col-md-1 col-2 list-content mx-auto">
+                <%= link_to '削除', admin_comment_path(comment.id),  method: :delete, "data-confirm" => "本当にコメントを削除しますか？", class: "btn btn-sm btn-danger" %>
+              </div>
+            </div>
+          <% end %>
         </div>
         <!-- ページネーションの記述 -->
         <%= paginate @comments %>
