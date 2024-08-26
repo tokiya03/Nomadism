@@ -10,11 +10,11 @@
       </div>
 
       <div class="row d-flex justify-content-between mt-2">
-        <div class="col-md-6 col-sm-12 px-0">
+        <div class="col-lg col-12 px-0">
           <div id="admin-show-map"></div>
         </div>
 
-        <div class="col ml-3">
+        <div class="col-lg col-12 post-show">
           <div class="row">
             <div class="col">
               <div class="row border-top">
@@ -23,11 +23,11 @@
               </div>
               <div class="row border-top">
                 <div class="col-4 py-3">店名（場所の名前）</div>
-                <div class="col py-3"><%= @post.name %></div>
+                <div class=" col py-3"><%= @post.name %></div>
               </div>
               <div class="row border-top">
                 <div class="col-4 py-3">説明（感想など）</div>
-                <div class="col py-3"><%= simple_format(@post.caption, class: "mb-0") %></div>
+                <div class=" col py-3"><%= simple_format(@post.caption, class: "mb-0") %></div>
               </div>
               <div class="row border-top">
                 <div class="col-4 py-3">感情分析スコア</div>

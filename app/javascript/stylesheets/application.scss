@@ -48,6 +48,10 @@ main {
   padding-left: 1.5rem;
 }
 
+.post-show {
+  margin-left: 1rem;
+}
+
 .post_lists {
   height: 600px;
   margin-left: 0.5rem;
@@ -200,6 +204,10 @@ main {
   .new_group_btn:before {
     font-size: 1rem;
     content: '＋';
+  }
+
+  .post-show {
+    margin: 1.5rem 0 0;
   }
 
   .post_lists {
